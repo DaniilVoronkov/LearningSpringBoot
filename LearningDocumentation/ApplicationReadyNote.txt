@@ -1,0 +1,5 @@
+@Component                              - means that it's a component of spring app
+public class CustomClassName implements ApplicationListener<ApplicationReadyEvent> {
+    @Override
+    public void omApplicationEvent(ApplicationReadyEvent event) {}              - this method will be invoked when all spring app is loaded and ready
+}

@@ -1,0 +1,11 @@
+Command prompt -> move to the project directory ->
+
+mvn install                     (command for command prompt)     ->
+ls target                      (to look for the files in the directory) If we have Jar file - then it's successfully installed ->
+java -jar target/JARFILENAME            (invokes jar file)
+
+8080    - default port  (localhost:8080)            We can run multiple copies of the spring project if they use different ports
+
+java -Dserver.port=9090 -jar target/JARFILENAME             - to run on another port
+
+ctrl + c on command prompt to terminate process

@@ -1,0 +1,17 @@
+logging.level.org.springframework.jdbc.datasource.init.ScriptUtils=debug                - to show debug (previously INFO messages) !!!NEVER DO IN THE PRODUCTION!!!
+
+
+spring.jpa.hibernate.ddl-auto=none              - if we already create schema and fill it with value (Not letting hibernate to create schema on its own)
+
+
+
+Configuring Postgresql database:
+1) Modify maven dependency (add postgresql)
+Add (application.properties):
+spring.jpa.database=postgresql
+spring.datasource.url=youraddress
+spring.datasource.username=yourusername
+spring.datasource.password=yourusername
+
+!!!Username and password should not be commited on the production!!!
+

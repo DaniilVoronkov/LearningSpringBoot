@@ -1,0 +1,8 @@
+@Repository
+interface RepositoryName extends CrudRepository<EntityClass, IdType> {}             - that's all for the basic repo
+
+
+
+Repo methods:
+findAll()           - returns Iterable<CustomEntity>;
+

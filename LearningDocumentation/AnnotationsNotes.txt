@@ -1,0 +1,12 @@
+@Entity
+@Table(name="SCHEMATABLENAME")                      - both annotations above the class
+
+
+
+Priary field
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+@Column(name="COLUMNNAME")
+
+
+
