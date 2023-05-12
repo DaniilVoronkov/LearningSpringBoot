@@ -1,4 +1,4 @@
-package models.enums;
+package com.createms.learningmicroservices.models.enums;
 
 public enum TeaType {
 

@@ -1,7 +1,7 @@
-package models.tables;
+package com.createms.learningmicroservices.models.tables;
 
 import jakarta.persistence.*;
-import models.enums.TeaType;
+import com.createms.learningmicroservices.models.enums.TeaType;
 
 
 import java.util.Objects;
@@ -23,8 +23,8 @@ public class Tea {
     @Column
     private Double teaPrice;
 
-    public Tea(Long teaId, String name, TeaType teaType, Double teaPrice) {
-        this.teaId = teaId;
+    public Tea(String name, TeaType teaType, Double teaPrice) {
+
         this.name = name;
         this.teaType = teaType;
         this.teaPrice = teaPrice;

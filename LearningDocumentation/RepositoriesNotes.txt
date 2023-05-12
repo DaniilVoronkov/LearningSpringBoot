@@ -1,0 +1,23 @@
+Repos types:
+1) CRUD Repo            - Create Read Update Delete
+2) JPA Repo             - JPA methods (flush/delete in batch)
+3) PagingAndSorting Repo        - paging and sorting methods
+
+CRUD repo methods:
+
+For SAVING:
+save(TableClass s)
+Iterable<TableClass> saveALl(Iterable<TableClass> iter)
+
+For Deleting:
+void deleteById(Integer integer)
+void delete(TableClass tableClass)
+void deleteAll(Iterable<TableClass> iterable)
+void deleteAll()
+
+For READING:
+Optional<TableClass> findById(Integer integer)                  - optional because it may not return anything (object with id can be nonexistent)
+boolean existsById(Integer objectId)
+Iterable<TableName> findAll()
+Iterable<TableName> findAllById(Iterable<Integer> iter)
+long count()                                                    - to check how many object we have

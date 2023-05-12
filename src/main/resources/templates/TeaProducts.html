@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Чаи</h1>
+    <table>
+        <tr>
+            <td>Название продукта:</td>
+            <td>Цена:</td>
+            <td>Тип чая: </td>
+        </tr>
+    <!-- at this point Thymeleaf does not know what TeaProduct is, it just expecting from us to pass the object with this name !!! TeaProducts is
+     the attribute that we added to the model in the controller-->
+    <!-- Basically its for(String s : collectionName) -->
+        <tr th:each="TeaProduct: ${TeaProductsList}">
+            <td th:text="${TeaProduct.getName()}">Tea Name</td>
+            <td th:text="${TeaProduct.getTeaPrice()}">Цена</td>
+            <td th:text="${TeaProduct.getTeaType().getTeaLabel()}">Тип Чая</td>
+        </tr>
+</table>
+</body>
+</html>

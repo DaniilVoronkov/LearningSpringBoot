@@ -1,0 +1,5 @@
+@Repository             - for storing db data
+@Service                - for business logic
+@Controller             - to show service data
+
+@Repository -> Injected in constructor in @Service  -> @Service injected in constructor in @Controller
