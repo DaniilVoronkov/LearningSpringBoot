@@ -1,5 +1,6 @@
 package com.createms.learningmicroservices.models.tables;
 
+import com.createms.learningmicroservices.models.abstraction.Product;
 import jakarta.persistence.*;
 import com.createms.learningmicroservices.models.enums.TeaType;
 
@@ -7,11 +8,9 @@ import com.createms.learningmicroservices.models.enums.TeaType;
 import java.util.Objects;
 
 @Entity
-public class Tea {
+public class Tea extends Product {
 
-    @Id
-    @GeneratedValue
-    private Long teaId;
+
 
     @Column(length = 2000)
     private String name;
@@ -24,7 +23,6 @@ public class Tea {
     private Double teaPrice;
 
     public Tea(String name, TeaType teaType, Double teaPrice) {
-
         this.name = name;
         this.teaType = teaType;
         this.teaPrice = teaPrice;
@@ -33,14 +31,6 @@ public class Tea {
 
     public Tea() {
 
-    }
-
-    public Long getId() {
-        return teaId;
-    }
-
-    public void setId(Long id) {
-        this.teaId = id;
     }
 
     public String getName() {
@@ -72,18 +62,17 @@ public class Tea {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tea tea = (Tea) o;
-        return Objects.equals(teaId, tea.teaId) && Objects.equals(name, tea.name) && teaType == tea.teaType && Objects.equals(teaPrice, tea.teaPrice);
+        return  Objects.equals(name, tea.name) && teaType == tea.teaType && Objects.equals(teaPrice, tea.teaPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(teaId, name, teaType, teaPrice);
+        return Objects.hash(name, teaType, teaPrice);
     }
 
     @Override
     public String toString() {
         return "Tea{" +
-                "id=" + teaId +
                 ", name='" + name + '\'' +
                 ", teaType=" + teaType +
                 ", teaPrice=" + teaPrice +

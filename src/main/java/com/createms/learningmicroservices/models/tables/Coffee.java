@@ -14,8 +14,8 @@ public class Coffee extends Product {
     @Enumerated
     private CoffeeType coffeeType;
 
-    public Coffee(Long coffeeId, String name, CoffeeType coffeeType, Double coffeePrice) {
-        super(name, coffeePrice, coffeeId);
+    public Coffee( String name, CoffeeType coffeeType, Double coffeePrice) {
+        super(name, coffeePrice);
         this.coffeeType = coffeeType;
     }
 
@@ -35,7 +35,7 @@ public class Coffee extends Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coffee coffee = (Coffee) o;
-        return coffeeType == coffee.coffeeType && Objects.equals(getPrice(), coffee.getPrice()) && Objects.equals(getId(), coffee.getId())
+        return coffeeType == coffee.coffeeType && Objects.equals(getPrice(), coffee.getPrice())
                 && Objects.equals(this.name, coffee.name);
     }
 
@@ -49,7 +49,6 @@ public class Coffee extends Product {
         return "Coffee{" +
                 "coffeeType=" + coffeeType +
                 ", coffeePrice=" + getPrice() +
-                ", cofeeId= " + getId() +
                 ", name='" + name + '\'' +
                 '}';
     }
