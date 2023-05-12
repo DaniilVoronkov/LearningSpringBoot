@@ -1,6 +1,8 @@
 package com.createms.learningmicroservices.models.enums;
 
-public enum CoffeeType {
+import com.createms.learningmicroservices.models.abstraction.ProductType;
+
+public enum CoffeeType implements ProductType {
     //names
     GRINDED, INSTANT, ORIGINAL ;
     //label for tea that is translated version of name
@@ -26,7 +28,8 @@ public enum CoffeeType {
 
     //getter for the label
 
-    public String getCoffeeLabel() {
+    @Override
+    public String getLabel() {
         return coffeeLabel;
     }
 }

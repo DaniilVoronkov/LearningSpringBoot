@@ -1,6 +1,8 @@
 package com.createms.learningmicroservices.models.enums;
 
-public enum TeaType {
+import com.createms.learningmicroservices.models.abstraction.ProductType;
+
+public enum TeaType implements ProductType {
 
     //names
     PACKAGED, LOOSE;
@@ -17,7 +19,8 @@ public enum TeaType {
     }
 
     //getter for the label
-    public String getTeaLabel() {
+    @Override
+    public String getLabel() {
         return teaLabel;
     }
 }
