@@ -36,7 +36,7 @@ public class Coffee extends Product {
         if (o == null || getClass() != o.getClass()) return false;
         Coffee coffee = (Coffee) o;
         return coffeeType == coffee.coffeeType && Objects.equals(getPrice(), coffee.getPrice())
-                && Objects.equals(this.name, coffee.name);
+                && Objects.equals(this.name, coffee.name) && Objects.equals(this.id, coffee.id);
     }
 
     @Override
@@ -47,6 +47,7 @@ public class Coffee extends Product {
     @Override
     public String toString() {
         return "Coffee{" +
+                "Id: " + id +
                 "coffeeType=" + coffeeType +
                 ", coffeePrice=" + getPrice() +
                 ", name='" + name + '\'' +

@@ -1,0 +1,13 @@
+By default Spring provides imlementation for all the basic REST service methods
+
+URL possible path parameters:
+
+size, page, sort (asc/desc)
+
+If we want data to be represented as the page, we should ade Page as the return type inside our interface (which extends PagingAndSortingRepo) and add Pagebale parameter as second param
+
+In our example
+Page<Tea> findByName(String name, Pageable page);
+
+that way our URL will can look like:
+localhost:8080/teas?size=2&page=1&sort=name,desc

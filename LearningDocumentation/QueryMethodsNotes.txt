@@ -1,0 +1,21 @@
+Query methods:
+
+Declared in the interface
+
+We must:
+1) Specify return type (usually something like Optional<T>)
+2) Specify method name (findByEntityattributename)
+3) Add parameter (actual Entity attribute)
+
+In this project, one of the examples can look like this:
+Optional<Tea> findByName(String name)
+or
+List<Tea> findByPrice(double price)
+
+
+We can also made something complex:
+List<Tea> findByPriceAndName(double price, String name)
+
+We can also write the method with custom query:                                     That way we can assign our custom name to the method
+@Query("Select a From Teas where a.name = ?1, and a.price = ?2")
+Optional<Tea> nameAndPriceSearch(String name, double price)

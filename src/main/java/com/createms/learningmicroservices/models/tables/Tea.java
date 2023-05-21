@@ -10,64 +10,38 @@ import java.util.Objects;
 @Entity
 public class Tea extends Product {
 
-
-
-    @Column(length = 2000)
-    private String name;
-
     @Column
     @Enumerated
     private TeaType teaType;
 
-    @Column
-    private Double teaPrice;
-
     public Tea(String name, TeaType teaType, Double teaPrice) {
         this.name = name;
         this.teaType = teaType;
-        this.teaPrice = teaPrice;
+        this.price = teaPrice;
     }
-
 
     public Tea() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public TeaType getTeaType() {
         return teaType;
     }
-
     public void setTeaType(TeaType teaType) {
         this.teaType = teaType;
     }
 
-    public Double getTeaPrice() {
-        return teaPrice;
-    }
-
-    public void setTeaPrice(Double teaPrice) {
-        this.teaPrice = teaPrice;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tea tea = (Tea) o;
-        return  Objects.equals(name, tea.name) && teaType == tea.teaType && Objects.equals(teaPrice, tea.teaPrice);
+        return  Objects.equals(name, tea.name) && teaType == tea.teaType && Objects.equals(price, tea.price) && Objects.equals(id, tea.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, teaType, teaPrice);
+        return Objects.hash(id, name, teaType, price);
     }
 
     @Override
@@ -75,7 +49,7 @@ public class Tea extends Product {
         return "Tea{" +
                 ", name='" + name + '\'' +
                 ", teaType=" + teaType +
-                ", teaPrice=" + teaPrice +
+                ", teaPrice=" + price +
                 '}';
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,11 +29,6 @@ public class TeaService {
         return teaRepository.count();
     }
 
-    public Iterable<Tea> findByName(String name) {
-        ArrayList<Tea> test = (ArrayList<Tea>) teaRepository.findAll();
-         return test.stream().filter(tea -> tea.getName().equals(name)).collect(Collectors.toList());
-
-    }
 
     public void saveTea(Tea tea) {
         teaRepository.save(tea);
@@ -42,9 +38,18 @@ public class TeaService {
         teaRepository.delete(tea);
     }
 
+
+    public List<Tea> findByNameWithLikeCondition(String teaName) {
+        return teaRepository.findByNameLike(teaName);
+    }
+
     public void deleteTeaById(Long id) {
-        if(teaRepository.findById(id).isPresent()) {
-            teaRepository.delete(teaRepository.findById(id).get());
-        }
+          teaRepository.deleteById(id);
+    }
+
+    public void deleteTeaByName(String name) {
+
+            teaRepository.deleteByName(name);
+
     }
 }

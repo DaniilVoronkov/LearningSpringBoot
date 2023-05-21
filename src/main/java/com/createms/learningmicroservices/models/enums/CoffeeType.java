@@ -1,6 +1,6 @@
 package com.createms.learningmicroservices.models.enums;
 
-import com.createms.learningmicroservices.models.abstraction.ProductType;
+import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 
 public enum CoffeeType implements ProductType {
     //names

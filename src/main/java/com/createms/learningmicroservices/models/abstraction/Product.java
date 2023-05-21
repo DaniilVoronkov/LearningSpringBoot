@@ -6,7 +6,10 @@ import jakarta.persistence.*;
 public abstract class Product {
 
     @Id
-    @Column(length = 2000)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
+    @Column(length = 2000, unique = true)
     public String name;
     @Column
     protected Double price;
@@ -33,5 +36,8 @@ public abstract class Product {
 
     public void setPrice(Double coffeePrice) {
         this.price = coffeePrice;
+    }
+
+    public Long getId() {        return id;
     }
 }

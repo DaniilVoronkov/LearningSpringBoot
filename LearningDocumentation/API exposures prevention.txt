@@ -1,0 +1,5 @@
+@RepositoryRestResource(exported = false)           - above the class (interface)
+@RestResource(exported = false)                     - above the method
+
+We can also change the endpoint with this annotation
+@RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
