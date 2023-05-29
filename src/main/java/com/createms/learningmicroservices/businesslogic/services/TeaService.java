@@ -1,6 +1,7 @@
 package com.createms.learningmicroservices.businesslogic.services;
 
 
+import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.repositories.TeaRepository;
 import com.createms.learningmicroservices.models.tables.Tea;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class TeaService {
@@ -21,8 +24,14 @@ public class TeaService {
         this.teaRepository = teaRepository;
     }
 
-    public Iterable<Tea> getAllTea() {
-        return teaRepository.findAll();
+    public List<Tea> getAllTea() {
+        return (List<Tea>) teaRepository.findAll();
+    }
+
+    public List<ProductDTO> getAllDtos() {
+        List<ProductDTO> test = new ArrayList<>();
+        getAllTea().forEach(tea -> test.add(new ProductDTO(tea.getName(), tea.getPrice(), tea.getTeaType())));
+        return test;
     }
 
     public long getAmountOfTeaProducts() {
@@ -49,7 +58,7 @@ public class TeaService {
 
     public void deleteTeaByName(String name) {
 
-            teaRepository.deleteByName(name);
+            teaRepository.delete(teaRepository.findByName(name));
 
     }
 }

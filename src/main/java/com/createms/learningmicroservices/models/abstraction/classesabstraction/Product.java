@@ -1,5 +1,6 @@
-package com.createms.learningmicroservices.models.abstraction;
+package com.createms.learningmicroservices.models.abstraction.classesabstraction;
 
+import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 import jakarta.persistence.*;
 
 @MappedSuperclass
@@ -13,6 +14,7 @@ public abstract class Product {
     public String name;
     @Column
     protected Double price;
+
 
     public Product(String name, Double price) {
         this.name = name;
@@ -40,4 +42,5 @@ public abstract class Product {
 
     public Long getId() {        return id;
     }
+
 }

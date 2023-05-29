@@ -1,8 +1,7 @@
 package com.createms.learningmicroservices.businesslogic.controllers;
 
 import com.createms.learningmicroservices.businesslogic.services.TeaService;
-import com.createms.learningmicroservices.models.tables.Tea;
-import jakarta.validation.Valid;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +18,21 @@ public class TeaController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/TeaProducts")
     public String getAllTeaProducts(Model model) {
-        model.addAttribute("TeaProductsList", teaService.getAllTea());
-        return "TeaProducts";
+        model.addAttribute("TeaProductsList", teaService.getAllDtos());
+        return "ProductPages/ProductsTable";
     }
 
 
 
 
-    @RequestMapping(path = "/Delete/{id}")
-    public String deleteTeaProductById(@PathVariable("id") Long id) {
-        teaService.deleteTeaById(id);
-        return "redirect:/Teas/TeaProducts";
+    @DeleteMapping(path = "/Delete/{name}")
+    @ResponseBody
+
+    //@Transactional
+    public boolean deleteTeaProductById(@PathVariable("name") String name) {
+        teaService.deleteTeaByName(name);
+        return true;
+
     }
 
    /* @RequestMapping(path = "/Delete/{id}", method = RequestMethod.GET)

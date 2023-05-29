@@ -1,6 +1,6 @@
 package com.createms.learningmicroservices.models.tables;
 
-import com.createms.learningmicroservices.models.abstraction.Product;
+import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import jakarta.persistence.*;
 
 import com.createms.learningmicroservices.models.enums.CoffeeType;
@@ -11,10 +11,10 @@ import java.util.Objects;
 public class Coffee extends Product {
 
     @Column
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private CoffeeType coffeeType;
 
-    public Coffee( String name, CoffeeType coffeeType, Double coffeePrice) {
+    public Coffee(String name, CoffeeType coffeeType, Double coffeePrice) {
         super(name, coffeePrice);
         this.coffeeType = coffeeType;
     }
