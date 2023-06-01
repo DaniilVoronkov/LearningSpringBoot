@@ -23,19 +23,20 @@
      the attribute that we added to the model in the controller-->
     <!-- Basically its for(String s : collectionName) -->
         <tbody>
-            <tr th:each="Product: ${TeaProductsList}">
+            <tr th:each="Product: ${ProductsList}">
                 <td th:text="${Product.getName()}" id="productNameData">Tea Name</td>
                 <td th:text="${Product.getPrice()}">Цена</td>
                 <td th:text="${Product.getType().getLabel()}">Тип</td>
                 <td><button>Add</button></td>
-                <td><button>Edit</button></td>
+                <td><a th:href="@{EditProductPage/{name}(name=${Product.getName()})}">Edit</a></td>
                 <td>
                     <!-- button option -->
                    <!-- <form action="#" th:action="@{Delete/{name} (name=${Product.getName()})}" th:method="delete">
                             <button type="submit" class="btn btn-primary active">Delete by Name</button>
-                    </form> -->
+                    </form>
+                    -->
             
-                    <button type="submit" class="btn btn-primary active" th:attr="onclick=| deleteRecord('${Product.getName()}')|">Delete</button>
+                    <button id="deleteButton" type="submit" class="btn btn-primary active" th:attr="onclick=| deleteRecord('${Product.getName()}')|">Delete</button>
                     <script>
                      function deleteRecord(productName) {
                         $.ajax({

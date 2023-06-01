@@ -1,0 +1,6 @@
+th:href="@{controller/method(firstParam='paramValue', secondParam='secondParamValue')}"
+
+that way we can add params to our link
+
+Access to param with thymeleaf:
+"${param.paramCustmName}"

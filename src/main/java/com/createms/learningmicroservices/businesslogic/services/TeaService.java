@@ -2,6 +2,8 @@ package com.createms.learningmicroservices.businesslogic.services;
 
 
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
+import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
+import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.repositories.TeaRepository;
 import com.createms.learningmicroservices.models.tables.Tea;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class TeaService {
 
     public List<ProductDTO> getAllDtos() {
         List<ProductDTO> test = new ArrayList<>();
-        getAllTea().forEach(tea -> test.add(new ProductDTO(tea.getName(), tea.getPrice(), tea.getTeaType())));
+        getAllTea().forEach(tea -> test.add(new ProductDTO(tea.getName(), tea.getPrice(), tea.getType().getLabel())));
         return test;
     }
 
@@ -59,6 +61,29 @@ public class TeaService {
     public void deleteTeaByName(String name) {
 
             teaRepository.delete(teaRepository.findByName(name));
+
+    }
+
+    public Tea findById(Long id) {
+        if(teaRepository.findById(id).isPresent()) {
+            return teaRepository.findById(id).get();
+        } else {
+            return null;
+        }
+    }
+
+    public Tea findByName(String teaName) {
+        return teaRepository.findByName(teaName);
+    }
+
+    public void updateTea(ProductDTO productDTO, Long id) {
+        if(teaRepository.findById(id).isPresent()) {
+            Tea tea = teaRepository.findById(id).get();
+            tea.setName(productDTO.getName());
+            tea.setTeaType(productDTO.getType().equals("в пакетиках") ? TeaType.PACKAGED : TeaType.LOOSE);
+            tea.setPrice(productDTO.getPrice());
+            teaRepository.save(tea);
+        }
 
     }
 }

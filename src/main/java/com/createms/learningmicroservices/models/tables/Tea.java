@@ -23,7 +23,7 @@ public class Tea extends Product {
     public Tea() {
     }
 
-    public TeaType getTeaType() {
+    public TeaType getType() {
         return teaType;
     }
     public void setTeaType(TeaType teaType) {
@@ -47,7 +47,8 @@ public class Tea extends Product {
     @Override
     public String toString() {
         return "Tea{" +
-                ", name='" + name + '\'' +
+                "id= " + id +
+                " name='" + name + '\'' +
                 ", teaType=" + teaType +
                 ", teaPrice=" + price +
                 '}';

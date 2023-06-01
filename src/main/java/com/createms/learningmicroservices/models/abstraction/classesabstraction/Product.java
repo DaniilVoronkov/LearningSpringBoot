@@ -8,12 +8,14 @@ public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Column
+    protected Long id;
 
     @Column(length = 2000, unique = true)
-    public String name;
+    protected String name;
     @Column
     protected Double price;
+
 
 
     public Product(String name, Double price) {

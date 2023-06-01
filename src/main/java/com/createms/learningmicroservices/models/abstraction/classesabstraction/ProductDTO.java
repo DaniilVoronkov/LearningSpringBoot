@@ -3,21 +3,32 @@ package com.createms.learningmicroservices.models.abstraction.classesabstraction
 
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 
+
 import java.util.Objects;
 
 //This class represents example of DTO (in this case it's only for learning purposes. That way we hide the id from user + use it for our shopping cart)
+
 public class ProductDTO {
 
-    public String name;
+    protected String name;
 
     protected Double price;
 
-    protected ProductType type;
+    protected String type;
 
-    public ProductDTO(String name, Double price, ProductType type) {
+    public ProductDTO(String name, Double price, String type) {
         this.name = name;
         this.price = price;
         this.type = type;
+    }
+
+    public ProductDTO(Product product) {
+        this.name = product.name;
+        this.price = product.getPrice();
+
+    }
+
+    public ProductDTO() {
     }
 
     public String getName() {
@@ -33,7 +44,7 @@ public class ProductDTO {
     }
 
 
-    public ProductType getType() {
+    public String getType() {
         return type;
     }
 
