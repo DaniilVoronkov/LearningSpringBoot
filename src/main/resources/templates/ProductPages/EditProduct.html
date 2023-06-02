@@ -13,7 +13,7 @@
   <form >
       <div class="form-group">
         <label for="productName">Product Name:</label>
-        <input id="productName" type="text" name="productName" placeholder="Name of the product" maxlength="100" th:value="${ProductToEdit.getName()}" class="form-control">
+        <input id="productName" type="text" name="productName" placeholder="Name of the product" maxlength="100" class="form-control" th:value="${ProductToEdit.getName()}">
       
       
         <label for="productPrice">Price:</label>
@@ -29,25 +29,10 @@
       <button id="editButton" type="submit" class="btn btn-primary active" >Edit</button>
       <script th:inline="javascript">
           const productId = [[${ProductToEdit.getId()}]];
+          const testName = [[${ProductToEdit.getName()}]];
+          alert(testName)
       </script>
-      <script>
-         $("#editButton").bind("click", function () {
-             const testObj = {};
-             testObj.name = $("#productName").val();
-             testObj.price = $("#productPrice").val();
-             testObj.type = $("#productType option:selected").text();
-              $.ajax({
-                  url: 'http://localhost:8080/Teas/Edit/' + productId,
-                  type: 'PATCH',
-                  data: JSON.stringify(testObj),
-                  dataType: "JSON",
-                  contentType: "application/json; charset=utf-8",
-                  success: function (result) {
-                      window.location = '/Teas/TeaProducts'
-                  }
-              });
-          });
-      </script>
+      <script th:src="@{/JSScripts/EditPageScripts.js}" defer></script>
   </form>
 </body>
 </html>
