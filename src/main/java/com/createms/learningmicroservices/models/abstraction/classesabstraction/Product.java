@@ -42,7 +42,12 @@ public abstract class Product {
         this.price = coffeePrice;
     }
 
-    public Long getId() {        return id;
+    public Long getId() {
+        return id;
+    }
+
+    public String getClassName() {
+       return this.getClass().getSimpleName();
     }
 
 }

@@ -6,15 +6,18 @@ $("#editButton").bind("click", function () {
     };
     $.ajax({
         async: false,
-        url: 'http://localhost:8080/Teas/Edit/' + productId,
+        url: 'http://localhost:8080/Tea/Edit/' + productId,
         type: 'PATCH',
         data: JSON.stringify(testObj),
         dataType: "JSON",
         contentType: "application/json; charset=utf-8",
         success: function (result) {
-            // alert("WOW!!!")
             window.location = '/Teas/TeaProducts'
             history.go(-1)
         }
     });
 });
+
+    function validate() {
+
+    }

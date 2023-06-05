@@ -80,7 +80,7 @@ public class TeaService {
         if(teaRepository.findById(id).isPresent()) {
             Tea tea = teaRepository.findById(id).get();
             tea.setName(productDTO.getName());
-            tea.setTeaType(productDTO.getType().equals("в пакетиках") ? TeaType.PACKAGED : TeaType.LOOSE);
+            tea.setTeaType(TeaType.getType(productDTO.getType()));
             tea.setPrice(productDTO.getPrice());
             teaRepository.save(tea);
         }

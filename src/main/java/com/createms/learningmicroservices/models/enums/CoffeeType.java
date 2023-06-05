@@ -2,6 +2,8 @@ package com.createms.learningmicroservices.models.enums;
 
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 
+import java.util.List;
+
 public enum CoffeeType implements ProductType {
     //names
     GRINDED, INSTANT, ORIGINAL ;
@@ -32,4 +34,7 @@ public enum CoffeeType implements ProductType {
     public String getLabel() {
         return coffeeLabel;
     }
+
+
+
 }

@@ -22,6 +22,7 @@ public class Coffee extends Product {
     public Coffee() {
     }
 
+
     public CoffeeType getCoffeeType() {
         return coffeeType;
     }

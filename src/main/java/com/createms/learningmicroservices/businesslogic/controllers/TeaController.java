@@ -3,18 +3,15 @@ package com.createms.learningmicroservices.businesslogic.controllers;
 import com.createms.learningmicroservices.businesslogic.services.TeaService;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.enums.TeaType;
-import com.createms.learningmicroservices.models.tables.Tea;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/Teas")
+@RequestMapping("/Tea")
 public class TeaController {
 
     TeaService teaService;
@@ -27,6 +24,11 @@ public class TeaController {
     public String getAllTeaProducts(Model model) {
         model.addAttribute("ProductsList", teaService.getAllTea());
         return "ProductPages/ProductsTable";
+    }
+
+    @GetMapping(path = "/AddProduct")
+    public String addProductView() {
+        return "ProductPages/AddProduct";
     }
 
 
@@ -45,7 +47,7 @@ public class TeaController {
 
         model.addAttribute("ProductToEdit", teaService.findByName(name));
         List<String> test = Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
-        model.addAttribute("TeaTypes", test);
+        model.addAttribute("ProductTypes", test);
         return "ProductPages/EditProduct";
     }
 

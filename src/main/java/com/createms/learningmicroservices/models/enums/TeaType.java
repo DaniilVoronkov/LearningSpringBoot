@@ -3,6 +3,8 @@ package com.createms.learningmicroservices.models.enums;
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 import com.createms.learningmicroservices.models.tables.Tea;
 
+import java.util.List;
+
 public enum TeaType implements ProductType {
 
     //names
@@ -22,7 +24,9 @@ public enum TeaType implements ProductType {
         return teaLabel;
     }
 
-    public TeaType getType(String type) {
+
+
+    public static TeaType getType(String type) {
         for(TeaType type1 : TeaType.values()) {
             if(type1.teaLabel.equals(type)) {
                 return type1;
