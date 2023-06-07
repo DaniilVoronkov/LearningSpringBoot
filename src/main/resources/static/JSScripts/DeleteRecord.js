@@ -3,7 +3,7 @@ function deleteRecord(productType, productName) {
         url: 'http://localhost:8080/' + productType + '/Delete/' + productName,
         type: 'DELETE',
         success: function () {
-            window.location = '/Teas/TeaProducts'
+            window.location = '/' + productType + '/TeaProducts'
         }
     });
 }

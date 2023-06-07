@@ -6,6 +6,7 @@ import com.createms.learningmicroservices.models.enums.TeaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.createms.learningmicroservices.models.tables.Tea;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,11 +24,13 @@ public class TeaController {
     @RequestMapping(method = RequestMethod.GET, path = "/TeaProducts")
     public String getAllTeaProducts(Model model) {
         model.addAttribute("ProductsList", teaService.getAllTea());
+        model.addAttribute("ProductType", Tea.class.getSimpleName());
         return "ProductPages/ProductsTable";
     }
 
     @GetMapping(path = "/AddProduct")
-    public String addProductView() {
+    public String addProductView(Model model) {
+        model.addAttribute("ProductVariations", TeaType.values());
         return "ProductPages/AddProduct";
     }
 
@@ -41,6 +44,7 @@ public class TeaController {
         teaService.deleteTeaByName(name);
     }
 
+
     //function that redirects to the edit page  (and adding data to the model)
     @RequestMapping(method = RequestMethod.GET, path = "/EditProductPage/{name}")
     public String editProductPage(@PathVariable("name") String name, Model model) {
@@ -50,6 +54,7 @@ public class TeaController {
         model.addAttribute("ProductTypes", test);
         return "ProductPages/EditProduct";
     }
+
 
     //function that performs the edit process
     @RequestMapping(path = "/Edit/{id}", method = RequestMethod.PATCH)

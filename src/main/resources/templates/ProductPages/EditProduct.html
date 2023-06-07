@@ -42,6 +42,8 @@
       <!-- getting value from id-->
       <script th:inline="javascript">
           const productId = [[${ProductToEdit.getId()}]];
+          
+          //Setting the default select value (which is equal to product type)
           $(function () {
               $("productType").val([[${ProductToEdit.getType()}]]);
           })
