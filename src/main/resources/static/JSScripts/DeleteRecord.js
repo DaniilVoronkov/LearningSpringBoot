@@ -1,9 +1,9 @@
-function deleteRecord(productType, productName) {
+function deleteRecord(productClass, productName) {
     $.ajax({
-        url: 'http://localhost:8080/' + productType + '/Delete/' + productName,
+        url: 'http://localhost:8080/' + productClass + '/Delete/' + productName,
         type: 'DELETE',
         success: function () {
-            window.location = '/' + productType + '/TeaProducts'
+            window.location = '/' + productClass + '/TeaProducts'
         }
     });
 }

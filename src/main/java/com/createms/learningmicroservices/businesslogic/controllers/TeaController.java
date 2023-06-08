@@ -24,7 +24,7 @@ public class TeaController {
     @RequestMapping(method = RequestMethod.GET, path = "/TeaProducts")
     public String getAllTeaProducts(Model model) {
         model.addAttribute("ProductsList", teaService.getAllTea());
-        model.addAttribute("ProductType", Tea.class.getSimpleName());
+        model.addAttribute("ProductClass", Tea.class.getSimpleName());
         return "ProductPages/ProductsTable";
     }
 
