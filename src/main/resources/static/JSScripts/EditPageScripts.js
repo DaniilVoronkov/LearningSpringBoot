@@ -11,13 +11,9 @@ $("#editButton").bind("click", function () {
         data: JSON.stringify(testObj),
         dataType: "JSON",
         contentType: "application/json; charset=utf-8",
-        success: function (result) {
+        success: function () {
             window.location = '/Teas/TeaProducts'
             history.go(-1)
         }
     });
 });
-
-    function validate() {
-
-    }
