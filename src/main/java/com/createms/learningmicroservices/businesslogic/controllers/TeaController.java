@@ -21,6 +21,7 @@ public class TeaController {
         this.teaService = teaService;
     }
 
+    //method that redirect to the table with all the products (in this example - with tea products)
     @RequestMapping(method = RequestMethod.GET, path = "/TeaProducts")
     public String getAllTeaProducts(Model model) {
         model.addAttribute("ProductsList", teaService.getAllTea());
@@ -28,12 +29,12 @@ public class TeaController {
         return "ProductPages/ProductsTable";
     }
 
+    //method that redirect to the add product form
     @GetMapping(path = "/AddProduct")
     public String addProductView(Model model) {
         model.addAttribute("ProductVariations", TeaType.values());
         return "ProductPages/AddProduct";
     }
-
 
 
     //deleting the object by name
@@ -48,7 +49,6 @@ public class TeaController {
     //function that redirects to the edit page  (and adding data to the model)
     @RequestMapping(method = RequestMethod.GET, path = "/EditProductPage/{name}")
     public String editProductPage(@PathVariable("name") String name, Model model) {
-
         model.addAttribute("ProductToEdit", teaService.findByName(name));
         List<String> test = Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
         model.addAttribute("ProductTypes", test);
@@ -56,7 +56,7 @@ public class TeaController {
     }
 
 
-    //function that performs the edit process
+    //function that performs the edit process (by redirecting to the corresponding service method)
     @RequestMapping(path = "/Edit/{id}", method = RequestMethod.PATCH)
     @ResponseBody
     public boolean editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") String id) {
@@ -64,10 +64,4 @@ public class TeaController {
         return true;
     }
 
-
-
-   /* @RequestMapping(path = "/Delete/{id}", method = RequestMethod.GET)
-    public String returnToTheList(@PathVariable("id") Long id) {
-        return "redirect:/Teas/TeaProducts";
-    } */
 }

@@ -2,11 +2,11 @@ package com.createms.learningmicroservices.models.enums;
 
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 
-import java.util.List;
 
 public enum CoffeeType implements ProductType {
     //names
     GRINDED, INSTANT, ORIGINAL ;
+
     //label for tea that is translated version of name
     private final String coffeeLabel;
 
@@ -14,13 +14,13 @@ public enum CoffeeType implements ProductType {
     CoffeeType() {
         switch (this.name().toUpperCase()) {
             case "GRINDED":
-                coffeeLabel = "Измельченный";
+                coffeeLabel = "Grinded";
                 break;
             case "INSTANT":
-                coffeeLabel = "В пакетиках";
+                coffeeLabel = "Instant";
                 break;
             case "ORIGINAL":
-                coffeeLabel = "Зерновой";
+                coffeeLabel = "Original";
                 break;
             default:
                 coffeeLabel = "";
@@ -29,7 +29,6 @@ public enum CoffeeType implements ProductType {
     }
 
     //getter for the label
-
     @Override
     public String getLabel() {
         return coffeeLabel;

@@ -1,19 +1,15 @@
 package com.createms.learningmicroservices.models.enums;
 
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
-import com.createms.learningmicroservices.models.tables.Tea;
-
-import java.util.List;
 
 public enum TeaType implements ProductType {
 
     //names
-    PACKAGED("в пакетиках"), LOOSE("рассыпной");
+    PACKAGED("In packages"), LOOSE("Tea leafs");
     //label for tea that is translated version of name
     private final String teaLabel;
 
     //initializing label in constructor
-
     TeaType(String label) {
         this.teaLabel = label;
     }
@@ -26,6 +22,7 @@ public enum TeaType implements ProductType {
 
 
 
+    //getting the type by name (to connect with DTO)
     public static TeaType getType(String type) {
         for(TeaType type1 : TeaType.values()) {
             if(type1.teaLabel.equals(type)) {

@@ -41,6 +41,7 @@
       
       <!-- getting value from id-->
       <script th:inline="javascript">
+          //getting the product id and storing it in the variable (to use it as the parameter for edit function
           const productId = [[${ProductToEdit.getId()}]];
           
           //Setting the default select value (which is equal to product type)
@@ -48,7 +49,6 @@
               $("productType").val([[${ProductToEdit.getType()}]]);
           })
       </script>
-      
       <!-- External js that calls PATCH method in controller -->
       <script th:src="@{/JSScripts/EditPageScripts.js}" defer></script>
   </form>

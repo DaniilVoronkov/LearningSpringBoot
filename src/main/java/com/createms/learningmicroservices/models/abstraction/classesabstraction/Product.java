@@ -1,8 +1,8 @@
 package com.createms.learningmicroservices.models.abstraction.classesabstraction;
 
-import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 import jakarta.persistence.*;
 
+//since a lot of products have the same attributes, it's a good idea to create an abstract class with all those attributes
 @MappedSuperclass
 public abstract class Product {
 
@@ -46,6 +46,7 @@ public abstract class Product {
         return id;
     }
 
+    //getting
     public String getClassName() {
        return this.getClass().getSimpleName();
     }

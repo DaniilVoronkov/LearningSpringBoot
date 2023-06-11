@@ -1,12 +1,10 @@
 package com.createms.learningmicroservices.models.abstraction.classesabstraction;
 
 
-import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
-
-
 import java.util.Objects;
 
-//This class represents example of DTO (in this case it's only for learning purposes. That way we hide the id from user + use it for our shopping cart)
+/* This class represents example of DTO (in this case it's only for learning purposes. That way we hide the id from user +
+use it for our shopping cart in the future) */
 
 public class ProductDTO {
 
