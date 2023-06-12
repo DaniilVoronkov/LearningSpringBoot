@@ -47,7 +47,7 @@ public class TeaController {
 
 
     //function that redirects to the edit page  (and adding data to the model)
-    @RequestMapping(method = RequestMethod.GET, path = "/EditProductPage/{name}")
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = "/EditProductPage/{name}")
     public String editProductPage(@PathVariable("name") String name, Model model) {
         model.addAttribute("ProductToEdit", teaService.findByName(name));
         List<String> test = Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
@@ -57,11 +57,14 @@ public class TeaController {
 
 
     //function that performs the edit process (by redirecting to the corresponding service method)
-    @RequestMapping(path = "/Edit/{id}", method = RequestMethod.PATCH)
+    @PatchMapping(path = "/Edit/{id}")
     @ResponseBody
-    public boolean editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") String id) {
+    public void editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") String id, Model model) {
         teaService.updateTea(productDTO, Long.parseLong(id));
-        return true;
+        System.out.println(teaService.findById(Long.parseLong(id)));
+
     }
+
+
 
 }

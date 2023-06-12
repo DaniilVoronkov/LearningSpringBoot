@@ -80,12 +80,7 @@ public class TeaService {
     //updating the tea product entry with the new value (!!! Later will be changed to query method)
     public void updateTea(ProductDTO productDTO, Long id) {
         if(teaRepository.findById(id).isPresent()) {
-            Tea tea = teaRepository.findById(id).get();
-            tea.setName(productDTO.getName());
-            tea.setTeaType(TeaType.getType(productDTO.getType()));
-            tea.setPrice(productDTO.getPrice());
-            teaRepository.save(tea);
+            teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
         }
-
     }
 }

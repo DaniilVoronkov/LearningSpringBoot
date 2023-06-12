@@ -6,12 +6,15 @@
     <meta charset="UTF-8">
     
     <!-- Dynamic title that depends on the product name -->
+<!--    <title> Edit Product</title>-->
     <title th:text="Edit + ' ' + ${ProductToEdit.getName()}"> </title>
     <!-- include block of code with Jquery and bootstrap -->
     <th:block th:replace="~{contenttoloadoneachpage/frameworksLinks :: stylingAndJsData}"></th:block>
+    <!-- External js that calls PATCH method in controller -->
+    <script th:src="@{/JSScripts/EditPageScripts.js}" defer></script>
 </head>
 <body>
-  <form th:method="PATCH">
+  <form th:method="PATCH" id="editForm">
       <div class="form-group">
           <!-- Product name input -->
         <label for="productName">Product Name:</label>
@@ -32,7 +35,7 @@
       </div>
       
       <!-- Edit button -->
-      <button id="editButton" type="submit" class="btn btn-primary active" >Edit</button>
+      <button id="editButton" type="submit" class="btn btn-primary active">Edit</button>
       
       <!-- getting value from id-->
       <script th:inline="javascript">
@@ -44,8 +47,7 @@
               $("productType").val([[${ProductToEdit.getType()}]]);
           })
       </script>
-      <!-- External js that calls PATCH method in controller -->
-      <script th:src="@{/JSScripts/EditPageScripts.js}" defer></script>
+      
   </form>
 </body>
 </html>
