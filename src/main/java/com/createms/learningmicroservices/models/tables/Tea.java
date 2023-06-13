@@ -1,6 +1,7 @@
 package com.createms.learningmicroservices.models.tables;
 
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
+import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import jakarta.persistence.*;
 import com.createms.learningmicroservices.models.enums.TeaType;
 
@@ -18,6 +19,13 @@ public class Tea extends Product {
         this.name = name;
         this.teaType = teaType;
         this.price = teaPrice;
+    }
+
+    public Tea(ProductDTO productDTO) {
+        this.name = productDTO.getName();
+        this.teaType = TeaType.getType(productDTO.getType());
+        this.price = productDTO.getPrice();
+
     }
 
     public Tea() {

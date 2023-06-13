@@ -18,4 +18,6 @@ public interface TeaRepository extends CrudRepository<Tea, Long>, ProductReposit
     @Transactional
     @Query("update Tea set name = :name, price = :price, teaType = :type where id = :id")
     void update(@Param("id") long productId ,@Param("name") String newName, @Param("price") double newPrice, @Param("type")TeaType type);
+
+
 }

@@ -8,7 +8,7 @@ public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(nullable = false, unique = true)
     protected Long id;
 
     @Column(length = 2000, unique = true)

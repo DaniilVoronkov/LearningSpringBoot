@@ -8,9 +8,15 @@
     
     <!-- include block of code with Jquery and bootstrap -->
     <th:block th:replace="~{contenttoloadoneachpage/frameworksLinks :: stylingAndJsData}"></th:block>
+    
+    <!-- External js that calls POST method in controller -->
+    <script th:src="@{/JSScripts/AddRecord.js}" defer></script>
+    <script th:inline="javascript" defer>
+        const productClass = [[${ProductClass}]];
+    </script>
 </head>
 <body>
-<form th:method="POST">
+<form th:method="PUT" id="addProductForm">
     <div class="form-group">
         <!-- Product name input -->
         <label for="productName">Product Name:</label>
@@ -33,10 +39,6 @@
     
     <!-- Edit button -->
     <button id="createButton" type="submit" class="btn btn-primary active" >Create Product</button>
-    
-    
-    <!-- External js that calls POST method in controller -->
-    <script th:src="@{/JSScripts/AddRecord.js}" defer></script>
 </form>
 
 </body>

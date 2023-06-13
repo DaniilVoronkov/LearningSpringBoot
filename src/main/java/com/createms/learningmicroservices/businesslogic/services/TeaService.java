@@ -41,6 +41,7 @@ public class TeaService {
     //saving the tea product in the table
     public void saveTea(Tea tea) {
         teaRepository.save(tea);
+
     }
 
     //deleting the product from the table
@@ -71,8 +72,6 @@ public class TeaService {
         }
     }
 
-
-
     public Tea findByName(String teaName) {
         return teaRepository.findByName(teaName);
     }
@@ -81,6 +80,7 @@ public class TeaService {
     public void updateTea(ProductDTO productDTO, Long id) {
         if(teaRepository.findById(id).isPresent()) {
             teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
+
         }
     }
 }

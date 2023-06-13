@@ -22,7 +22,7 @@ public class TeaController {
     }
 
     //method that redirect to the table with all the products (in this example - with tea products)
-    @RequestMapping(method = RequestMethod.GET, path = "/TeaProducts")
+    @RequestMapping(method = RequestMethod.GET, path = "/ProductsTable")
     public String getAllTeaProducts(Model model) {
         model.addAttribute("ProductsList", teaService.getAllTea());
         model.addAttribute("ProductClass", Tea.class.getSimpleName());
@@ -30,9 +30,11 @@ public class TeaController {
     }
 
     //method that redirect to the add product form
-    @GetMapping(path = "/AddProduct")
+    @RequestMapping(path = "/AddProductPage", method = {RequestMethod.GET, RequestMethod.POST})
     public String addProductView(Model model) {
-        model.addAttribute("ProductVariations", TeaType.values());
+        List<String> teaTypesLabels = Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
+        model.addAttribute("ProductVariations", teaTypesLabels);
+        model.addAttribute("ProductClass", "Tea");
         return "ProductPages/AddProduct";
     }
 
@@ -49,9 +51,10 @@ public class TeaController {
     //function that redirects to the edit page  (and adding data to the model)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = "/EditProductPage/{name}")
     public String editProductPage(@PathVariable("name") String name, Model model) {
-        model.addAttribute("ProductToEdit", teaService.findByName(name));
-        List<String> test = Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
-        model.addAttribute("ProductTypes", test);
+        Tea tea = teaService.findByName(name);
+        model.addAttribute("ProductToEdit", tea);
+        List<String> teaTypesLabels = Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
+        model.addAttribute("ProductTypes", teaTypesLabels);
         return "ProductPages/EditProduct";
     }
 
@@ -59,9 +62,15 @@ public class TeaController {
     //function that performs the edit process (by redirecting to the corresponding service method)
     @PatchMapping(path = "/Edit/{id}")
     @ResponseBody
-    public void editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") String id, Model model) {
+    public void editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") String id) {
         teaService.updateTea(productDTO, Long.parseLong(id));
-        System.out.println(teaService.findById(Long.parseLong(id)));
+    }
+
+    //function that saves entry based on the product dto
+    @PutMapping(path = "/AddProduct")
+    @ResponseBody
+    public void addTea(@RequestBody ProductDTO productDTO) {
+        teaService.saveTea(new Tea(productDTO));
 
     }
 

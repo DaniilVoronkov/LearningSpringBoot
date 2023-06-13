@@ -5,20 +5,21 @@ $("#editForm").on("submit", function () {
         type: $("#productType option:selected").text()
     };
 
+
     Promise.resolve(
         $.ajax({
-            url: '/Tea/Edit/' + productId,
+            url: '/' + productClass + '/Edit/' + productId,
             type: 'PATCH',
             data: JSON.stringify(testObj),
-            dataType: "text",
+            dataType: "json",
             contentType: "application/json; charset=utf-8",
         })).then($.ajax({
-        url: '/',
-        type: 'GET',
-        success: function () {
-            window.location = '/'
-        }
-    })).catch(function (e) {
-        alert(e)
-    })
+            url: '/' + productClass + '/ProductsTable',
+            type: 'GET',
+            success: function () {
+                window.location = '/' + productClass + '/ProductsTable'
+            }
+        })).catch(function (e) {
+            alert(e)
+        })
 });
