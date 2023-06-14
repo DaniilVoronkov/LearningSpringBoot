@@ -6,12 +6,16 @@
     <meta charset="UTF-8">
     
     <!-- Dynamic title that depends on the product name -->
-<!--    <title> Edit Product</title>-->
     <title th:text="Edit + ' ' + ${ProductToEdit.getName()}"> </title>
+    
+    <!-- Adding our custom css -->
+    <link rel="stylesheet" href="/styles/ValidationStyling.css">
+    
     <!-- include block of code with Jquery and bootstrap -->
     <th:block th:replace="~{contenttoloadoneachpage/frameworksLinks :: stylingAndJsData}"></th:block>
+    
     <!-- External js that calls PATCH method in controller -->
-    <script th:src="@{/JSScripts/EditPageScripts.js}" defer></script>
+    <script th:src="@{/JSScripts/EditPageScripts.js}" type="module" defer></script>
 </head>
 <body>
   <form th:method="PATCH" id="editForm">
@@ -19,13 +23,13 @@
           <!-- Product name input -->
         <label for="productName">Product Name:</label>
         <input id="productName" type="text" name="productName" placeholder="Name of the product" maxlength="100"
-               class="form-control" th:value="${ProductToEdit.getName()}">
-          <label for="productName" class="errorMessage" id="productNameError" style="display: none"></label>
+               class="form-control" th:value="${ProductToEdit.getName()}"/>
+          <label for="productName" class="errorMessage productNameError" id="productNameError"></label>
       
           <!-- Product price input -->
         <label for="productPrice">Price:</label>
         <input id="productPrice" type="number" name="productPrice" placeholder="Product price:" th:value="${ProductToEdit.getPrice()}" class="form-control">
-          <label for="productPrice" class="errorMessage" id="productPriceError" style="display: none"></label>
+          <label for="productPrice" class="errorMessage" id="productPriceError"></label>
       
           <!-- product type select -->
        <label for="productType">Product Type:</label>
@@ -35,7 +39,7 @@
       </div>
       
       <!-- Edit button -->
-      <button id="editButton" type="submit" class="btn btn-primary active">Edit</button>
+      <button id="editButton" type="button" class="btn btn-primary active">Edit</button>
       
       <!-- getting value from id-->
       <script th:inline="javascript" defer>

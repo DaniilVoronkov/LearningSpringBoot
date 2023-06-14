@@ -9,8 +9,11 @@
     <!-- include block of code with Jquery and bootstrap -->
     <th:block th:replace="~{contenttoloadoneachpage/frameworksLinks :: stylingAndJsData}"></th:block>
     
+    <!-- Adding our custom css -->
+    <link rel="stylesheet" href="/styles/ValidationStyling.css">
+    
     <!-- External js that calls POST method in controller -->
-    <script th:src="@{/JSScripts/AddRecord.js}" defer></script>
+    <script th:src="@{/JSScripts/AddRecord.js}" type="module" defer></script>
     <script th:inline="javascript" defer>
         const productClass = [[${ProductClass}]];
     </script>
@@ -22,12 +25,12 @@
         <label for="productName">Product Name:</label>
         <input id="productName" type="text" name="productName" placeholder="Name of the product" maxlength="100"
                class="form-control">
-        <label for="productName" class="errorMessage" id="productNameError" style="display: none"></label>
+        <label for="productName" class="errorMessage" id="productNameError"></label>
         
         <!-- Product price input -->
         <label for="productPrice">Price:</label>
         <input id="productPrice" type="number" name="productPrice" placeholder="Product price:" class="form-control">
-        <label for="productPrice" class="errorMessage" id="productPriceError" style="display: none"></label>
+        <label for="productPrice" class="errorMessage" id="productPriceError"></label>
         
         <!-- product type select -->
         <label for="productType">Product Type:</label>
@@ -38,7 +41,7 @@
     </div>
     
     <!-- Edit button -->
-    <button id="createButton" type="submit" class="btn btn-primary active" >Create Product</button>
+    <button id="createButton" type="button" class="btn btn-primary active" >Create Product</button>
 </form>
 
 </body>

@@ -1,25 +1,30 @@
-$("#addProductForm").on("submit", function () {
-    const testObj = {
-        name: $("#productName").val(),
-        price: $("#productPrice").val(),
-        type: $("#productType option:selected").text()
-    };
+import {isProductDataValid} from "./Validation.js";
+import {createObjectForSending} from "./CreateObjectForSending.js";
 
-    Promise.resolve(
-        $.ajax({
-            url: 'http://localhost:8080/'+ productClass +'/AddProduct',
-            type: 'PUT',
-            data: JSON.stringify(testObj),
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            // success: function () {
-            //    //window.location = '/' + productClass + '/TeaProducts'
-            // }
-        })).then($.ajax({
-        url: '/' + productClass + '/ProductsTable',
-        type: 'GET',
-        success: function () {
-            window.location = '/' + productClass + '/ProductsTable'
-        }
-    }))
-});
+
+$("#createButton").on("click", function () {
+    alert(isProductDataValid())
+    if(isProductDataValid()) {
+        performAdding();
+    }
+})
+function performAdding () {
+
+        const objectToSend = createObjectForSending();
+
+        Promise.resolve(
+            $.ajax({
+                url: 'http://localhost:8080/' + productClass + '/AddProduct',
+                type: 'PUT',
+                data: JSON.stringify(objectToSend),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+            })).then(
+            $.ajax({
+                url: '/' + productClass + '/ProductsTable',
+                type: 'GET',
+                success: function () {
+                    window.location = '/' + productClass + '/ProductsTable'
+            }
+        }))
+}

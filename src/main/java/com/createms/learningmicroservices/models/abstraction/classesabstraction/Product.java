@@ -1,6 +1,7 @@
 package com.createms.learningmicroservices.models.abstraction.classesabstraction;
 
 import jakarta.persistence.*;
+import org.hibernate.validator.constraints.Length;
 
 //since a lot of products have the same attributes, it's a good idea to create an abstract class with all those attributes
 @MappedSuperclass
@@ -11,7 +12,8 @@ public abstract class Product {
     @Column(nullable = false, unique = true)
     protected Long id;
 
-    @Column(length = 2000, unique = true)
+    @Column(unique = true)
+    @Length(min = 2, max = 40)
     protected String name;
     @Column
     protected Double price;
