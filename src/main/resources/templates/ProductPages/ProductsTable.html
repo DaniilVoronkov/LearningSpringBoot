@@ -29,7 +29,7 @@
                 <td th:text="${Product.getName()}" id="productNameData">Tea Name</td>
                 <td th:text="${Product.getPrice()}">Цена</td>
                 <td th:text="${Product.getType().getLabel()}">Тип</td>
-                <td><a th:href="@{EditProductPage/{name}(name=${Product.getName()})}">Edit</a></td>
+                <td><a th:href="@{EditProductPage/{name}(name=${Product.getName()})}" class="btn btn-primary active">Edit</a></td>
                 <td>
                     
                     <!-- Delete button -->
@@ -39,7 +39,6 @@
                             th:attr="onclick=| deleteRecord('${ProductClass}' ,'${Product.getName()}')|">Delete</button>
                     <script th:src="@{/JSScripts/DeleteRecord.js}" defer></script>
                 </td>
-                <td></td>
             </tr>
         </tbody>
 </table>
