@@ -1,8 +1,8 @@
+//creating an object based on the input fields
 export function createObjectForSending() {
-    const objectToSend = {
+    return {
         name: $("#productName").val(),
         price: $("#productPrice").val(),
         type: $("#productType option:selected").text()
     };
-    return objectToSend;
 }

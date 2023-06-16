@@ -8,14 +8,16 @@
     <!-- Dynamic title that depends on the product name -->
     <title th:text="Edit + ' ' + ${ProductToEdit.getName()}"> </title>
     
-    <!-- Adding our custom css -->
-    <link rel="stylesheet" href="/styles/ValidationStyling.css">
-    
     <!-- include block of code with Jquery and bootstrap -->
     <th:block th:replace="~{contenttoloadoneachpage/frameworksLinks :: stylingAndJsData}"></th:block>
     
+    <!-- Adding our custom css -->
+    <link rel="stylesheet" href="/styles/ValidationStyling.css">
+    
     <!-- External js that calls PATCH method in controller -->
     <script th:src="@{/JSScripts/EditPageScripts.js}" type="module" defer></script>
+    
+    <link href="/styles/FormsStyling.css" rel="stylesheet">
 </head>
 <body>
   <div id="formPart">

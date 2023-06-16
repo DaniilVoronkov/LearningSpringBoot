@@ -23,7 +23,6 @@ public class ProductDTO {
     public ProductDTO(Product product) {
         this.name = product.name;
         this.price = product.getPrice();
-
     }
 
     public ProductDTO() {

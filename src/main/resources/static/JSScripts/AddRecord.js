@@ -3,7 +3,6 @@ import {createObjectForSending} from "./CreateObjectForSending.js";
 
 
 $("#createButton").on("click", function () {
-    alert(isProductDataValid())
     if(isProductDataValid()) {
         performAdding();
     }

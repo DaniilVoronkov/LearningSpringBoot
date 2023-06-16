@@ -1,0 +1,12 @@
+#formPart {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    max-width: 13em;
+}
+
+button {
+    margin: 2em;
+}

@@ -1,0 +1,12 @@
+.table {
+    margin-left: auto;
+    max-width: 50%;
+    margin-right: auto;
+}
+
+.headingRow > td {
+    font-family: 'Geologica', sans-serif;
+    font-weight: bold;
+    background-color: black;
+    color: plum;
+}
