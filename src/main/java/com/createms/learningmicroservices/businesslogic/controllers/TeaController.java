@@ -2,6 +2,7 @@ package com.createms.learningmicroservices.businesslogic.controllers;
 
 import com.createms.learningmicroservices.businesslogic.services.TeaService;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
+import com.createms.learningmicroservices.models.abstraction.controllers.ProductController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import com.createms.learningmicroservices.models.tables.Tea;
 
 @Controller
 @RequestMapping("/Tea")
-public class TeaController {
+public class TeaController implements ProductController {
 
     TeaService teaService;
 
@@ -20,7 +21,7 @@ public class TeaController {
 
     //method that redirect to the table with all the products (in this example - with tea products)
     @RequestMapping(method = RequestMethod.GET, path = "/ProductsTable")
-    public String getAllTeaProducts(Model model) {
+    public String getAllProducts(Model model) {
         model.addAttribute("ProductsList", teaService.getAllTea());
         model.addAttribute("ProductClass", Tea.class.getSimpleName());
         return "ProductPages/ProductsTable";
@@ -28,7 +29,7 @@ public class TeaController {
 
     //method that redirect to the add product form
     @RequestMapping(path = "/AddProductPage", method = {RequestMethod.GET, RequestMethod.POST})
-    public String addProductView(Model model) {
+    public String getAddProductPage(Model model) {
         model.addAttribute("ProductVariations", teaService.getTeaLabels());
         model.addAttribute("ProductClass", Tea.class.getSimpleName());
         return "ProductPages/AddProduct";
@@ -39,15 +40,15 @@ public class TeaController {
     @DeleteMapping(path = "/Delete/{name}")
     @ResponseBody
     //@Transactional
-    public void deleteTeaProductById(@PathVariable("name") String name) {
+    public void deleteProductById(@PathVariable("name") String name) {
         teaService.deleteTeaByName(name);
     }
 
 
     //function that redirects to the edit page  (and adding data to the model)
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = "/EditProductPage/{name}")
-    public String editProductPage(@PathVariable("name") String name, Model model) {
-        Tea tea = teaService.findByName(name);
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = "/EditProductPage/{id}")
+    public String getEditProductPage(@PathVariable("id") Long id, Model model) {
+        Tea tea = teaService.findById(id);
         model.addAttribute("ProductToEdit", tea);
         model.addAttribute("ProductTypes", teaService.getTeaLabels());
         return "ProductPages/EditProduct";

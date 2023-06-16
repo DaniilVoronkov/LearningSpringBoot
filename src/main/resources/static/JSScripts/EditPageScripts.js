@@ -1,10 +1,18 @@
 import {isProductDataValid} from "./Validation.js";
 import {createObjectForSending} from "./CreateObjectForSending.js";
 
+//when we click on the edit button - trigger the edit process in the controller
 $("#editButton").on("click", function () {
     if(isProductDataValid()) {
-        const objectToSend = createObjectForSending();
+        performEdit();
+    }
+});
 
+
+
+    function performEdit () {
+        //getting the user input as object
+        const objectToSend = createObjectForSending();
 
         Promise.resolve(
             $.ajax({
@@ -20,8 +28,6 @@ $("#editButton").on("click", function () {
                 success: function () {
                     window.location = '/' + productClass + '/ProductsTable'
                 }
-            })).catch(function (e) {
-                alert(e)
-            })
+            }))
+
     }
-});
