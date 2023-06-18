@@ -8,24 +8,26 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-
+@Table(name = "users")
 public class Users {
+
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
+    @Column(name = "UserId")
     private Long userId;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "Email")
     @NotBlank(message = "Email can't be empty")
     private String email;
 
-    @Column
+    @Column(name = "Password")
     @NotBlank(message = "Password can't be empty")
     private String password;
 
-    @Column
+    @Column(name = "FullName")
     private String fullName;
 
-    @Column
+    @Column(name = "Age")
     @Size(min = 18, max = 150)
     private int age;
 

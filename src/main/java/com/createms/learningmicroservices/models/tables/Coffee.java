@@ -7,10 +7,11 @@ import com.createms.learningmicroservices.models.enums.CoffeeType;
 
 import java.util.Objects;
 
+@Table(name = "coffeeproducts")
 @Entity
 public class Coffee extends Product {
 
-    @Column
+    @Column(name="Type")
     @Enumerated(EnumType.STRING)
     private CoffeeType coffeeType;
 
@@ -22,6 +23,17 @@ public class Coffee extends Product {
     public Coffee() {
     }
 
+    @Override
+    @Column(name = "Price")
+    public Double getPrice() {
+        return super.getPrice();
+    }
+
+    @Override
+    @Column(name = "Name")
+    public String getName() {
+        return super.getName();
+    }
 
     public CoffeeType getCoffeeType() {
         return coffeeType;

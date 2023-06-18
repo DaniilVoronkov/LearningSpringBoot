@@ -9,13 +9,11 @@ public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
+    @Column(name = "Id")
     protected Long id;
 
-    @Column(unique = true)
-    @Length(min = 2, max = 40)
     protected String name;
-    @Column
+
     protected Double price;
 
 
@@ -26,14 +24,6 @@ public abstract class Product {
     }
 
     public Product() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Double getPrice() {
@@ -53,4 +43,11 @@ public abstract class Product {
        return this.getClass().getSimpleName();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

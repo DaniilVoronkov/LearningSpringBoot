@@ -4,14 +4,18 @@ import com.createms.learningmicroservices.models.abstraction.classesabstraction.
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import jakarta.persistence.*;
 import com.createms.learningmicroservices.models.enums.TeaType;
+import org.hibernate.validator.constraints.Length;
 
 
 import java.util.Objects;
 
+@Table(name="teaproducts")
 @Entity
+@AttributeOverride(name = "name", column = @Column(name = "teaname"))
+@AttributeOverride(name = "price", column = @Column(name = "teaprice"))
 public class Tea extends Product {
 
-    @Column
+    @Column(name = "teatype")
     @Enumerated(EnumType.STRING)
     private TeaType teaType;
 
@@ -37,6 +41,8 @@ public class Tea extends Product {
     public void setTeaType(TeaType teaType) {
         this.teaType = teaType;
     }
+
+
 
 
     @Override
