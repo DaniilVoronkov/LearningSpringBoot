@@ -40,7 +40,7 @@
                     <button id="deleteButton"
                             type="submit"
                             class="btn btn-primary active"
-                            th:attr="onclick=| deleteRecord('${ProductClass}' ,'${Product.getName()}')|">Delete</button>
+                            th:attr="onclick=| deleteRecord('${ProductClass}' ,'${Product.getId()}')|">Delete</button>
                     
                     <!-- script that deletes the record -->
                     <script th:src="@{/JSScripts/DeleteRecord.js}" defer></script>

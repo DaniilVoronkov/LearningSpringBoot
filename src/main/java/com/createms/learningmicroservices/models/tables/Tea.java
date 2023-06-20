@@ -11,8 +11,6 @@ import java.util.Objects;
 
 @Table(name="teaproducts")
 @Entity
-@AttributeOverride(name = "name", column = @Column(name = "teaname"))
-@AttributeOverride(name = "price", column = @Column(name = "teaprice"))
 public class Tea extends Product {
 
     @Column(name = "teatype")

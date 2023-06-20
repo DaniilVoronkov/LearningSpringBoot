@@ -1,6 +1,7 @@
 package com.createms.learningmicroservices.businesslogic.services;
 
 
+import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.repositories.TeaRepository;
@@ -60,6 +61,7 @@ public class TeaService {
           teaRepository.deleteById(id);
     }
 
+
     public void deleteTeaByName(String name) {
             teaRepository.delete(teaRepository.findByName(name));
     }
@@ -77,7 +79,7 @@ public class TeaService {
         return teaRepository.findByName(teaName);
     }
 
-    //updating the tea product entry with the new value (!!! Later will be changed to query method)
+    //updating the tea product entry with the new value
     public void updateTea(ProductDTO productDTO, Long id) {
         if(teaRepository.findById(id).isPresent()) {
             teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));

@@ -36,12 +36,14 @@ public class TeaController implements ProductController {
     }
 
 
+
+
     //deleting the object by name
-    @DeleteMapping(path = "/Delete/{name}")
+    @DeleteMapping(path = "/Delete/{id}")
     @ResponseBody
     //@Transactional
-    public void deleteProductById(@PathVariable("name") String name) {
-        teaService.deleteTeaByName(name);
+    public void deleteProductById(@PathVariable("id") Long id) {
+        teaService.deleteTeaById(id);
     }
 
 
@@ -58,8 +60,9 @@ public class TeaController implements ProductController {
     //function that performs the edit process (by redirecting to the corresponding service method)
     @PatchMapping(path = "/Edit/{id}")
     @ResponseBody
-    public void editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") String id) {
-        teaService.updateTea(productDTO, Long.parseLong(id));
+    public String editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
+        teaService.updateTea(productDTO, id);
+        return "redirect:/getAllProducts";
     }
 
     //function that saves entry based on the product dto

@@ -9,11 +9,11 @@ public interface ProductController {
 
     String getAddProductPage(Model model);
 
-    void deleteProductById(String name);
+    void deleteProductById(Long id);
 
     String getEditProductPage(Long id, Model model);
 
-    void editProduct(ProductDTO productDTO, String id);
+    String editProduct(ProductDTO productDTO, Long id);
 
     void addProduct(ProductDTO productDTO);
 
