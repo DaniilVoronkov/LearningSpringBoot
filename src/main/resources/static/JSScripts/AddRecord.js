@@ -23,7 +23,7 @@ function performAdding () {
                 url: '/' + productClass + '/ProductsTable',
                 type: 'GET',
                 success: function () {
-                    window.location = '/' + productClass + '/ProductsTable'
+                    window.location = '/'
             }
         }))
 }

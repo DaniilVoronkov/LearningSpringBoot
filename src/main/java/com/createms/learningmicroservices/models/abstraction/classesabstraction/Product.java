@@ -9,7 +9,7 @@ public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
+    @Column(name = "Id", unique = false, nullable = false)
     protected Long id;
 
     protected String name;

@@ -14,20 +14,21 @@ $("#editButton").on("click", function () {
         //getting the user input as object
         const objectToSend = createObjectForSending();
 
-        Promise.resolve(
+       Promise.resolve(
             $.ajax({
                 url: '/' + productClass + '/Edit/' + productId,
                 type: 'PATCH',
                 data: JSON.stringify(objectToSend),
                 dataType: "json",
-                contentType: "application/json; charset=utf-8",
+                contentType: "application/json; charset=utf-8"
             })).then(
             $.ajax({
                 url: '/' + productClass + '/ProductsTable',
                 type: 'GET',
                 success: function () {
-                    window.location = '/' + productClass + '/ProductsTable'
+                    window.location = '/'
                 }
-            }))
+            })
+       )
 
     }
