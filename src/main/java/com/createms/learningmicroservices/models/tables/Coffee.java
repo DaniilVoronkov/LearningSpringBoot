@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Table(name = "coffeeproducts")
 @Entity
+@PrimaryKeyJoinColumn(name = "Id")
 public class Coffee extends Product {
 
     @Column(name="Type")
@@ -21,18 +22,6 @@ public class Coffee extends Product {
     }
 
     public Coffee() {
-    }
-
-    @Override
-    @Column(name = "Price")
-    public Double getPrice() {
-        return super.getPrice();
-    }
-
-    @Override
-    @Column(name = "Name")
-    public String getName() {
-        return super.getName();
     }
 
     public CoffeeType getCoffeeType() {

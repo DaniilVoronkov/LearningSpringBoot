@@ -1,10 +1,12 @@
 package com.createms.learningmicroservices.models.abstraction.classesabstraction;
 
 import jakarta.persistence.*;
-import org.hibernate.validator.constraints.Length;
+import jakarta.validation.constraints.*;
 
 //since a lot of products have the same attributes, it's a good idea to create an abstract class with all those attributes
-@MappedSuperclass
+@Entity
+@Table(name = "Products")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Product {
 
     @Id
@@ -12,8 +14,17 @@ public abstract class Product {
     @Column(name = "Id", unique = false, nullable = false)
     protected Long id;
 
+    @Column(name = "name")
+    @Size(min = 2, max = 45)
+    @NotNull(message = "Name of the product can't be null!")
+    @NotBlank(message = "Name of the product can't be blank!")
     protected String name;
 
+
+    @Column(name = "price")
+    @NotNull
+    @DecimalMin(value = "1.00", message = "Price can't be less than 1")
+    @DecimalMax(value = "9999.00", message = "Price can't be bigger than 9999.0")
     protected Double price;
 
 

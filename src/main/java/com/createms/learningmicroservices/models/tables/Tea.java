@@ -11,6 +11,7 @@ import java.util.Objects;
 
 @Table(name="teaproducts")
 @Entity
+@PrimaryKeyJoinColumn(name = "Id")
 public class Tea extends Product {
 
     @Column(name = "teatype")
