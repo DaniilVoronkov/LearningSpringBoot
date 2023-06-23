@@ -2,10 +2,8 @@ package com.createms.learningmicroservices.models.tables;
 
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
-import jakarta.persistence.*;
 import com.createms.learningmicroservices.models.enums.TeaType;
-import org.hibernate.validator.constraints.Length;
-
+import jakarta.persistence.*;
 
 import java.util.Objects;
 

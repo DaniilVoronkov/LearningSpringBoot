@@ -13,7 +13,7 @@ function performAdding () {
 
         Promise.resolve(
             $.ajax({
-                url: 'http://localhost:8080/' + productClass + '/AddProduct',
+                url: '/' + productClass + '/AddProduct',
                 type: 'PUT',
                 data: JSON.stringify(objectToSend),
                 dataType: "json",
