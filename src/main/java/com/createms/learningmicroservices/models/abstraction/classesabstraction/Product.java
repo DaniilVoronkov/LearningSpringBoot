@@ -16,6 +16,7 @@ public abstract class Product {
 
     @Column(name = "name")
     @Size(min = 2, max = 45)
+    @Pattern(regexp = "[a-zA-Z\\s]")
     @NotNull(message = "Name of the product can't be null!")
     @NotBlank(message = "Name of the product can't be blank!")
     protected String name;
