@@ -6,6 +6,7 @@ import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.repositories.TeaRepository;
 import com.createms.learningmicroservices.models.tables.Tea;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -42,7 +43,11 @@ public class TeaService {
 
     //saving the tea product in the table
     public void saveTea(Tea tea) {
-        teaRepository.save(tea);
+        if(isValid(new ProductDTO(tea))) {
+            teaRepository.save(tea);
+        } else {
+            throw new IllegalArgumentException("Unable to save tea with given arguments");
+        }
 
     }
 
@@ -61,33 +66,28 @@ public class TeaService {
           teaRepository.deleteById(id);
     }
 
-
-    public void deleteTeaByName(String name) {
-            teaRepository.delete(teaRepository.findByName(name));
-    }
-
     //finding the product by id
     public Tea findById(Long id) {
-        if(teaRepository.findById(id).isPresent()) {
-            return teaRepository.findById(id).get();
-        } else {
-            return null;
-        }
-    }
-
-    public Tea findByName(String teaName) {
-        return teaRepository.findByName(teaName);
+       return teaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("There is no Tea with given ID"));
     }
 
     //updating the tea product entry with the new value
     public void updateTea(ProductDTO productDTO, Long id) {
         if(teaRepository.findById(id).isPresent()) {
-            teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
-
+            if(isValid(productDTO)) teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
+            else throw new IllegalArgumentException("Unable to update Tea with given arguments");
+        } else {
+            throw new ResourceNotFoundException("Tea was not found!");
         }
     }
 
     public List<String> getTeaLabels() {
         return Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
+    }
+
+    public boolean isValid(ProductDTO productDTO) {
+        return productDTO.getName().matches("[a-zA-Z\\s]{2,45}")
+                && (productDTO.getPrice() > 1 && productDTO.getPrice() < 999999.99)
+                && TeaType.containsLabel(productDTO.getType());
     }
 }
