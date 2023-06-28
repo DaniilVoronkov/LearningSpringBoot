@@ -5,6 +5,7 @@ import com.createms.learningmicroservices.models.abstraction.classesabstraction.
 import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.repositories.TeaRepository;
 import com.createms.learningmicroservices.models.tables.Tea;
+import jakarta.validation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -12,15 +13,20 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TeaService {
 
     private final TeaRepository teaRepository;
 
+    private Validator validator;
+
     @Autowired
     public TeaService(TeaRepository teaRepository) {
         this.teaRepository = teaRepository;
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
     }
 
     //getting all the tea products
@@ -42,11 +48,12 @@ public class TeaService {
 
 
     //saving the tea product in the table
-    public void saveTea(Tea tea) {
-        if(isValid(new ProductDTO(tea))) {
+    public void saveTea(@Valid Tea tea) {
+        Set<ConstraintViolation<Tea>> validationResult = isValid(tea);
+        if(validationResult.isEmpty()) {
             teaRepository.save(tea);
         } else {
-            throw new IllegalArgumentException("Unable to save tea with given arguments");
+            throw new ConstraintViolationException(validationResult);
         }
 
     }
@@ -63,7 +70,8 @@ public class TeaService {
 
     //deleting tea from the table by id
     public void deleteTeaById(Long id) {
-          teaRepository.deleteById(id);
+        if(id != null) teaRepository.deleteById(id);
+        else throw new IllegalArgumentException("Id can't be null!");
     }
 
     //finding the product by id
@@ -73,21 +81,18 @@ public class TeaService {
 
     //updating the tea product entry with the new value
     public void updateTea(ProductDTO productDTO, Long id) {
-        if(teaRepository.findById(id).isPresent()) {
-            if(isValid(productDTO)) teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
-            else throw new IllegalArgumentException("Unable to update Tea with given arguments");
-        } else {
-            throw new ResourceNotFoundException("Tea was not found!");
-        }
+        Set<ConstraintViolation<Tea>> validationResult = isValid(new Tea(productDTO));
+        if(validationResult.isEmpty()) teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
+        else throw new ConstraintViolationException(validationResult);
+        teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
+
     }
 
     public List<String> getTeaLabels() {
         return Arrays.stream(TeaType.values()).map(TeaType::getLabel).toList();
     }
 
-    public boolean isValid(ProductDTO productDTO) {
-        return productDTO.getName().matches("[a-zA-Z\\s]{2,45}")
-                && (productDTO.getPrice() > 1 && productDTO.getPrice() < 999999.99)
-                && TeaType.containsLabel(productDTO.getType());
+    public Set<ConstraintViolation<Tea>> isValid(Tea tea) {
+        return validator.validate(tea);
     }
 }
