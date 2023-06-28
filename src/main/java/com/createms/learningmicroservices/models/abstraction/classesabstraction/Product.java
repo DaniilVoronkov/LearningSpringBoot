@@ -15,15 +15,15 @@ public abstract class Product {
     protected Long id;
 
     @Column(name = "name")
-    @Size(min = 2, max = 45)
-    @Pattern(regexp = "[a-zA-Z\\s]")
+    @Size(min = 2, max = 45, message = "Name length must be between 2 and 45")
+    @Pattern(regexp = "[a-zA-Z\\s]", message = "Name can only contain letters and spaces")
     @NotNull(message = "Name of the product can't be null!")
     @NotBlank(message = "Name of the product can't be blank!")
     protected String name;
 
 
     @Column(name = "price")
-    @NotNull
+    @NotNull(message = "Price of the product can't be null")
     @DecimalMin(value = "1.00", message = "Price can't be less than 1")
     @DecimalMax(value = "9999.00", message = "Price can't be bigger than 9999.0")
     protected Double price;
