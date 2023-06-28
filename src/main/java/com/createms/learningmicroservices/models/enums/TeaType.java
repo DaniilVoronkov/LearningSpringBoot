@@ -32,6 +32,15 @@ public enum TeaType implements ProductType {
         return null;
     }
 
+    public static boolean containsLabel(String label) {
+        for(TeaType type : TeaType.values()) {
+            if(type.getLabel().equals(label)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 }
