@@ -76,6 +76,12 @@ public class TeaServiceTest {
         verify(teaRepository).findById(anyLong());
     }
 
+    @Test
+    @DisplayName("Deleting with null argument")
+    public void deleteWithNullAsArgument() {
+        assertThrows(IllegalArgumentException.class, () -> teaService.deleteTeaById(null));
+    }
+
 
 
 }
