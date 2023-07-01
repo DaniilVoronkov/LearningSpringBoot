@@ -10,6 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
+      <a href="/Tea/ProductsTable">Test</a>
   </React.StrictMode>
 );
 
