@@ -5,12 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "react-router-dom";
+import NavigationBar from "./components/NavigationBar";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-      <a href="/Tea/ProductsTable">Test</a>
+      <NavigationBar/>
   </React.StrictMode>
 );
 

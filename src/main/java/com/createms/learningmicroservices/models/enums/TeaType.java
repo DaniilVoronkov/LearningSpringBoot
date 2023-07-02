@@ -2,6 +2,11 @@ package com.createms.learningmicroservices.models.enums;
 
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Arrays.stream;
+
 public enum TeaType implements ProductType {
 
     //names
@@ -39,6 +44,12 @@ public enum TeaType implements ProductType {
             }
         }
         return false;
+    }
+
+    public static List<String> getAllLabels() {
+        List<String> labels = new ArrayList<>();
+        stream(TeaType.values()).forEach(elem -> labels.add(elem.getLabel()));
+        return labels;
     }
 
 

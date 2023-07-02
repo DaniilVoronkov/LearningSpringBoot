@@ -81,7 +81,4 @@ public class TeaServiceTest {
     public void deleteWithNullAsArgument() {
         assertThrows(IllegalArgumentException.class, () -> teaService.deleteTeaById(null));
     }
-
-
-
 }
