@@ -4,6 +4,7 @@ import com.createms.learningmicroservices.businesslogic.services.TeaService;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.abstraction.controllers.ProductController;
+import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.tables.Tea;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -50,8 +51,14 @@ public class TeaController implements ProductController<Tea> {
     //function that performs the edit process (by redirecting to the corresponding service method)
     @PatchMapping(path = "/Edit/{id}")
     @ResponseBody
-    public ResponseEntity editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
-        return ResponseEntity.ok(teaService.updateTea(productDTO, id));
+    public void editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
+        teaService.updateTea(productDTO, id);
+    }
+
+    @GetMapping(path = "/EditProductPage/{id}")
+    @ResponseBody
+    public ResponseEntity<Tea> editProductPage(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(teaService.findById(id));
     }
 
     //function that saves entry based on the product dto
@@ -59,6 +66,11 @@ public class TeaController implements ProductController<Tea> {
     @ResponseBody
     public void addProduct(@RequestBody ProductDTO productDTO) {
         teaService.saveTea(new Tea(productDTO));
+    }
+
+    @GetMapping(path = "/allTeaTypes")
+    public List<String> getAllTypes() {
+        return TeaType.getAllLabels();
     }
 
 

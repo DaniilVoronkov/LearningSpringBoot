@@ -80,11 +80,11 @@ public class TeaService {
     }
 
     //updating the tea product entry with the new value
-    public Tea updateTea(ProductDTO productDTO, Long id) {
+    public void updateTea(ProductDTO productDTO, Long id) {
         Set<ConstraintViolation<Tea>> validationResult = isValid(new Tea(productDTO));
         if(validationResult.isEmpty()) teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
         else throw new ConstraintViolationException(validationResult);
-        return teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
+        teaRepository.update(id, productDTO.getName(), productDTO.getPrice(), TeaType.getType(productDTO.getType()));
 
     }
 
