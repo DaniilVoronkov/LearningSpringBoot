@@ -1,13 +1,7 @@
 package com.createms.learningmicroservices;
 
-import com.createms.learningmicroservices.models.enums.TeaType;
-import com.createms.learningmicroservices.models.repositories.TeaRepository;
-import com.createms.learningmicroservices.models.tables.Tea;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 
 @SpringBootApplication

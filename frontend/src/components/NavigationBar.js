@@ -1,12 +1,11 @@
 import {Component} from "react";
-import {Navbar, NavbarBrand, NavLink} from "reactstrap";
-import Link from "react-router-dom";
+import {Navbar, NavLink} from "reactstrap";
 
 export default class NavigationBar extends Component {
 
     render() {
         return <Navbar>
-            <NavbarBrand tag={NavLink} to="/Tea/ProductsTable">Tea List</NavbarBrand>
+            <NavLink  href="/Tea/ProductsTable">Tea List</NavLink>
         </Navbar>
     }
 }
