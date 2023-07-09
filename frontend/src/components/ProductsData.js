@@ -1,6 +1,6 @@
 import {Component} from "react";
-import {Link, useNavigate} from "react-router-dom";
-
+import {remove} from "../Scripts/ProductInteractions";
+import ProductsTable from "./ProductsTable";
 export default class ProductsData extends Component {
     constructor(props) {
         super(props);
@@ -11,13 +11,12 @@ export default class ProductsData extends Component {
     async componentDidMount() {
         let currentPath = window.location.pathname;
         let splittedPath = currentPath.split("/");
-        await fetch('/' + splittedPath[1] + '/ProductsTable')
+
+        const response = await fetch('/' + splittedPath[1] + '/ProductsTable')
             .then(response => response.json())
             .then(data => this.setState({products: data}));
 
     }
-
-
 
     async remove(productClass, productId) {
         await fetch(`/${productClass}/Delete/${productId}`, {
@@ -34,8 +33,9 @@ export default class ProductsData extends Component {
 
     render() {
         const {products} = this.state;
-        return products.map(product => {
 
+
+        return products.map(product => {
 
             return <tr key={product.id}>
 
@@ -43,9 +43,10 @@ export default class ProductsData extends Component {
                 <td>{product.price}</td>
                 <td>{product.type}</td>
                 <td>
-                    <Link to={'/' + product.className + "/EditProductPage/" + product.id}>
-                        <button>Edit</button>
-                    </Link>
+
+                    <button type="button">
+                        Edit
+                    </button>
 
                 </td>
                 <td>
