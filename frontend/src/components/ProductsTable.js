@@ -1,30 +1,35 @@
-
-import {Component} from "react";
-import Link from "react-router-dom";
-import Button from "bootstrap/js/src/button";
 import {Container} from "reactstrap";
 import ProductsData from "./ProductsData";
-import {remove} from "../Scripts/ProductInteractions";
+import {Link, useLocation} from "react-router-dom";
+import "../Styling/TablePageStyling.css";
 
 
-export default class ProductsTable extends Component {
+export default function ProductsTable() {
 
-    render() {
+    let tableStyling = "table table-bordered table-hover mx-auto";
+
+    let productClass = useLocation().pathname.split("/")[1];
         return (
-            <Container fluid>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Product price</th>
-                            <th>Product Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         <ProductsData/>
-                    </tbody>
-                </table>
-            </Container>
+            <div>
+                <Container fluid>
+                    <div className="float-right">
+                        <Link to={"/" + productClass + "/EditProductPage/NewProduct"} id="AddProductButton">{"Add " + productClass}</Link>
+                    </div>
+                    <table className={tableStyling}>
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product price</th>
+                                <th>Product Type</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <ProductsData/>
+                        </tbody>
+                    </table>
+                </Container>
+            </div>
         )
     }
-}
