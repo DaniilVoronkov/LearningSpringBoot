@@ -1,12 +1,19 @@
 package com.createms.learningmicroservices.models.enums;
 
 import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Arrays.stream;
 
 public enum TeaType implements ProductType {
 
     //names
     PACKAGED("In packages"), LOOSE("Tea leafs");
     //label for tea that is translated version of name
+    @JsonValue
     private final String teaLabel;
 
     //initializing label in constructor
@@ -39,6 +46,13 @@ public enum TeaType implements ProductType {
             }
         }
         return false;
+    }
+
+
+    public static List<String> getAllLabels() {
+        List<String> labels = new ArrayList<>();
+        stream(TeaType.values()).forEach(elem -> labels.add(elem.getLabel()));
+        return labels;
     }
 
 

@@ -1,0 +1,16 @@
+#editForm {
+    display: inline-grid;
+
+}
+
+input {
+    max-width: 13em;
+}
+
+button {
+    margin: 2em;
+}
+
+.form-group {
+    margin-top: 1em;
+}

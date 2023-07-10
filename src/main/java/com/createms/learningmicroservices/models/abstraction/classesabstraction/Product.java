@@ -16,7 +16,7 @@ public abstract class Product {
 
     @Column(name = "name")
     @Size(min = 2, max = 45, message = "Name length must be between 2 and 45")
-    @Pattern(regexp = "[a-zA-Z\\s]", message = "Name can only contain letters and spaces")
+    @Pattern(regexp = "[a-zA-Z\\s]{2,45}", message = "Name can only contain letters and spaces")
     @NotNull(message = "Name of the product can't be null!")
     @NotBlank(message = "Name of the product can't be blank!")
     protected String name;

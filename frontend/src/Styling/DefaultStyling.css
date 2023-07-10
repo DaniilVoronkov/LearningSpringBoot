@@ -1,0 +1,20 @@
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Geologica', sans-serif;
+    text-align: center;
+}
+
+a {
+    font-family: 'Inconsolata', monospace;
+    font-size: 1em;
+}
+
+label {
+    font-size: 2em;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+a:hover, button:hover{
+    cursor: pointer;
+}
+
+

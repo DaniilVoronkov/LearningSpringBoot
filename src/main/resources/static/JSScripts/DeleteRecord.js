@@ -1,6 +1,6 @@
-function deleteRecord(productClass, productName) {
+export function deleteRecord(productClass, productId) {
     $.ajax({
-        url: '/' + productClass + '/Delete/' + productName,
+        url: '/' + productClass + '/Delete/' + productId,
         type: 'DELETE',
         success: function () {
             window.location = '/' + productClass + '/ProductsTable'

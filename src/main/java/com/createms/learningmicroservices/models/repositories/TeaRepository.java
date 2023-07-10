@@ -17,7 +17,7 @@ public interface TeaRepository extends CrudRepository<Tea, Long>, ProductReposit
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional
     @Query("UPDATE Tea SET name = :name, price = :price, teaType = :type WHERE id = :id")
-    void update(@Param("id") long productId ,@Param("name") String newName, @Param("price") double newPrice, @Param("type")TeaType type);
+    Tea update(@Param("id") long productId ,@Param("name") String newName, @Param("price") double newPrice, @Param("type")TeaType type);
 
     @Override
     Tea findByName(String name);

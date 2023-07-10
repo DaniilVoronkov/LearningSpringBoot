@@ -24,7 +24,7 @@ public class LearningMicroservicesApplication {
 //		CommandLineRunner testDB(TeaRepository repository) {
 //			return args -> {
 //				repository.save(new Tea("Test", TeaType.PACKAGED, 212.1));
-//				repository.save(new Tea("Test2", TeaType.LOOSE, 1234521.1));
+//				repository.save(new Tea("Test Two", TeaType.LOOSE, 1234.1));
 //			};
 //		}
 //	}

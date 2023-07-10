@@ -3,15 +3,17 @@ package com.createms.learningmicroservices.businesslogic.controllers;
 import com.createms.learningmicroservices.businesslogic.services.TeaService;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.abstraction.controllers.ProductController;
+import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.tables.Tea;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
-@Controller
+
+@RestController
 @RequestMapping("/Tea")
-public class TeaController implements ProductController {
+public class TeaController implements ProductController<Tea> {
 
     TeaService teaService;
 
@@ -21,48 +23,39 @@ public class TeaController implements ProductController {
 
     //method that redirect to the table with all the products (in this example - with tea products)
     @RequestMapping(method = RequestMethod.GET, path = "/ProductsTable")
-    public String getAllProducts(Model model) {
-        model.addAttribute("ProductsList", teaService.getAllTea());
-        model.addAttribute("ProductClass", Tea.class.getSimpleName());
-        return "ProductPages/ProductsTable";
+    public List<Tea> getAllProducts() {
+        return teaService.getAllTea();
     }
 
-    //method that redirect to the add product form
-    @RequestMapping(path = "/AddProductPage", method = {RequestMethod.GET, RequestMethod.POST})
-    public String getAddProductPage(Model model) {
-        model.addAttribute("ProductVariations", teaService.getTeaLabels());
-        model.addAttribute("ProductClass", Tea.class.getSimpleName());
-        return "ProductPages/AddProduct";
+    @Override
+    @GetMapping("/{id}")
+    public Tea getProduct(@PathVariable Long id) {
+        return teaService.findById(id);
     }
-
-
 
 
     //deleting the object by name
     @DeleteMapping(path = "/Delete/{id}")
     @ResponseBody
     //@Transactional
-    public void deleteProductById(@PathVariable("id") Long id) {
+    public ResponseEntity deleteProductById(@PathVariable("id") Long id) {
         teaService.deleteTeaById(id);
+        return ResponseEntity.ok().build();
     }
 
-
-    //function that redirects to the edit page  (and adding data to the model)
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, path = "/EditProductPage/{id}")
-    public String getEditProductPage(@PathVariable("id") Long id, Model model) {
-        Tea tea = teaService.findById(id);
-        model.addAttribute("ProductToEdit", tea);
-        model.addAttribute("ProductTypes", teaService.getTeaLabels());
-        return "ProductPages/EditProduct";
-    }
 
 
     //function that performs the edit process (by redirecting to the corresponding service method)
     @PatchMapping(path = "/Edit/{id}")
     @ResponseBody
-    public String editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
+    public void editProduct(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
         teaService.updateTea(productDTO, id);
-        return "redirect:/getAllProducts";
+    }
+
+    @GetMapping(path = "/EditProductPage/{id}")
+    @ResponseBody
+    public ResponseEntity<Tea> editProductPage(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(teaService.findById(id));
     }
 
     //function that saves entry based on the product dto
@@ -70,6 +63,11 @@ public class TeaController implements ProductController {
     @ResponseBody
     public void addProduct(@RequestBody ProductDTO productDTO) {
         teaService.saveTea(new Tea(productDTO));
+    }
+
+    @GetMapping(path = "/allTeaTypes")
+    public List<String> getAllTypes() {
+        return TeaType.getAllLabels();
     }
 
 
