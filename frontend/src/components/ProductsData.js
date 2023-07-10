@@ -1,6 +1,5 @@
 import {Component} from "react";
-import {remove} from "../Scripts/ProductInteractions";
-import ProductsTable from "./ProductsTable";
+import {Link} from "react-router-dom";
 export default class ProductsData extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +11,7 @@ export default class ProductsData extends Component {
         let currentPath = window.location.pathname;
         let splittedPath = currentPath.split("/");
 
-        const response = await fetch('/' + splittedPath[1] + '/ProductsTable')
+        await fetch('/' + splittedPath[1] + '/ProductsTable')
             .then(response => response.json())
             .then(data => this.setState({products: data}));
 
@@ -50,7 +49,9 @@ export default class ProductsData extends Component {
 
                 </td>
                 <td>
-                    <button onClick={() => this.remove(product.className, product.id)}>Delete</button>
+                    <Link to={'/' + product.className + "/EditProductPage/" + product.id}>
+                        <button>Edit</button>
+                    </Link>
                 </td>
 
             </tr>

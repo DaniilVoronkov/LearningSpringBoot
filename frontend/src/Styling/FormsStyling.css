@@ -1,6 +1,6 @@
-#formPart {
-    display: flex;
-    justify-content: center;
+#editForm {
+    display: inline-grid;
+
 }
 
 input {
@@ -9,4 +9,8 @@ input {
 
 button {
     margin: 2em;
+}
+
+.form-group {
+    margin-top: 1em;
 }

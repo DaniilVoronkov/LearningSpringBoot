@@ -1,14 +1,11 @@
 package com.createms.learningmicroservices.businesslogic.controllers;
 
 import com.createms.learningmicroservices.businesslogic.services.TeaService;
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.abstraction.controllers.ProductController;
 import com.createms.learningmicroservices.models.enums.TeaType;
 import com.createms.learningmicroservices.models.tables.Tea;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
