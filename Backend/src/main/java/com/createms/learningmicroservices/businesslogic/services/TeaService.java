@@ -20,7 +20,7 @@ public class TeaService {
 
     private final TeaRepository teaRepository;
 
-    private Validator validator;
+    private final Validator validator;
 
     @Autowired
     public TeaService(TeaRepository teaRepository) {
