@@ -3,7 +3,7 @@
 
 }
 
-input {
+input, select {
     max-width: 13em;
 }
 
@@ -14,3 +14,4 @@ button {
 .form-group {
     margin-top: 1em;
 }
+
