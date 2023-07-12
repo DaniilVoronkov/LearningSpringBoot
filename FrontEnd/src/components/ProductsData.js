@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {Link} from "react-router-dom";
+
 export default class ProductsData extends Component {
     constructor(props) {
         super(props);
@@ -8,10 +9,9 @@ export default class ProductsData extends Component {
     }
 
     async componentDidMount() {
-        let currentPath = window.location.pathname;
-        let splittedPath = currentPath.split("/");
+        const productClass = window.location.pathname.split("/")[1];
 
-        await fetch('/' + splittedPath[1] + '/ProductsTable')
+        await fetch('/' + productClass + '/ProductsTable')
             .then(response => response.json())
             .then(data => this.setState({products: data}));
 
@@ -33,7 +33,6 @@ export default class ProductsData extends Component {
     render() {
         const {products} = this.state;
 
-
         return products.map(product => {
 
             return <tr key={product.id}>
@@ -43,8 +42,8 @@ export default class ProductsData extends Component {
                 <td>{product.type}</td>
                 <td>
 
-                    <button type="button">
-                        Edit
+                    <button type="button" onClick={() => this.remove(product.className, product.id)}>
+                        Delete
                     </button>
 
                 </td>
@@ -55,7 +54,6 @@ export default class ProductsData extends Component {
                 </td>
 
             </tr>
-
         });
     }
 }
