@@ -10,29 +10,31 @@ import "../Styling/FormsStyling.css";
 
 export default function ProductForm() {
 
-
+    //variable that will hold the product object
     const [productValue, setValue] = useState({
         product: "",
     });
+    //product types
     const [productTypes, updateTypes] = useState({
         Types: []
     });
 
-
-
-    //gettinh product class from the url
+    //getting product class from the url
     let productClass = window.location.pathname.split("/")[1];
 
+    //variable that holds id of the product (which is passed as the URL parameter)
     let {id} = useParams();
 
     //function that holds all the data about the product + its possible types
     const loadData = async () => {
+        //getting the product data
         if (id !== 'NewProduct') {
             await fetch('/' + productClass + '/' + id)
                 .then(response => response.json())
                 .then(data => setValue({product: data}));
         }
 
+        //getting all the possible types of the product
         await fetch('/' + productClass + '/all' + productClass + 'Types')
             .then(response => response.json())
             .then(data => updateTypes({Types: data}));
@@ -41,13 +43,18 @@ export default function ProductForm() {
 
     useEffect(() => {
        void loadData();
+       //setting the page title based on the type of the product
+       document.title = productClass + (isProductNew ? " Add " : " Edit ") + "Form";
     }, []);
 
+    //react-hook-form values
     const {register, handleSubmit, formState: {errors}} = useForm({
         defaultValues: loadData
     });
 
+        //check if we are adding a product or working with existing one
         let isProductNew = id === 'NewProduct';
+        //generate button text based on the type of the product (new or existing one)
         const buttonText = isProductNew ? 'Add ' + productClass : 'Edit ' + productClass;
 
         //function that triggers when we submit the form with valid data
@@ -99,6 +106,7 @@ export default function ProductForm() {
                     />
                     <ErrorMessage name="price" errors={errors} render={({message}) => <p className="errorMessage">{message}</p>}></ErrorMessage>
                 </div>
+                {/*                         If we want to add data dynamically                                         */}
                 {/*{*/}
                 {/*    Object.keys(productValue.product).map(property => {*/}
                 {/*        if(property !== 'id' && property !== 'type') {*/}
@@ -119,7 +127,6 @@ export default function ProductForm() {
                             {productTypes.Types.map(type => <option key={type} defaultValue={type}>{type}</option>)}
                         </select>
                     </div>
-
 
                 <div className="form-group">
                     {/* <!-- Edit button --> */}
