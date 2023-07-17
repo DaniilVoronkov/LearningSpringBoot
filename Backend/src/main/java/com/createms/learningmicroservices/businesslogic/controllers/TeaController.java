@@ -38,9 +38,8 @@ public class TeaController implements ProductController<Tea> {
     @DeleteMapping(path = "/Delete/{id}")
     @ResponseBody
     //@Transactional
-    public ResponseEntity deleteProductById(@PathVariable("id") Long id) {
+    public void deleteProductById(@PathVariable("id") Long id) {
         teaService.deleteTeaById(id);
-        return ResponseEntity.ok().build();
     }
 
 
@@ -65,6 +64,7 @@ public class TeaController implements ProductController<Tea> {
         teaService.saveTea(new Tea(productDTO));
     }
 
+    //getting all labels from TeaType enum
     @GetMapping(path = "/allTeaTypes")
     public List<String> getAllTypes() {
         return TeaType.getAllLabels();

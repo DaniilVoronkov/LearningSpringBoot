@@ -2,7 +2,6 @@ package com.createms.learningmicroservices.models.abstraction.controllers;
 
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public interface ProductController <T extends Product> {
 
     T getProduct(@PathVariable Long id);
 
-    ResponseEntity deleteProductById(Long id);
+    void deleteProductById(Long id);
 
     void editProduct(ProductDTO productDTO, Long id);
 
