@@ -17,12 +17,14 @@ public class Tea extends Product {
     private TeaType teaType;
 
     public Tea(String name, TeaType teaType, Double teaPrice) {
+        super();
         this.name = name;
         this.teaType = teaType;
         this.price = teaPrice;
     }
 
     public Tea(ProductDTO productDTO) {
+        super();
         this.name = productDTO.getName();
         this.teaType = TeaType.getType(productDTO.getType());
         this.price = productDTO.getPrice();

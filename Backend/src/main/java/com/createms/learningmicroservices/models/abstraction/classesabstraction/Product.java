@@ -28,21 +28,25 @@ public abstract class Product {
     @DecimalMax(value = "9999.00", message = "Price can't be bigger than 9999.0")
     protected Double price;
 
+    protected String className;
 
 
-    public Product(String name, Double price) {
+
+    public Product(@NotNull String name, @NotNull Double price) {
+        className = getClassName();
         this.name = name;
         this.price = price;
     }
 
     public Product() {
+        className = getClassName();
     }
 
-    public Double getPrice() {
+    public @NotNull Double getPrice() {
         return price;
     }
 
-    public void setPrice(Double coffeePrice) {
+    public void setPrice(@NotNull Double coffeePrice) {
         this.price = coffeePrice;
     }
 
@@ -50,12 +54,12 @@ public abstract class Product {
         return id;
     }
 
-    //getting
+
     public String getClassName() {
        return this.getClass().getSimpleName();
     }
 
-    public String getName() {
+    public @NotNull String getName() {
         return name;
     }
 
