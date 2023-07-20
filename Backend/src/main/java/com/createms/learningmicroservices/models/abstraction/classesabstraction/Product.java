@@ -11,7 +11,7 @@ public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", unique = false, nullable = false)
+    @Column(name = "Id", unique = true, nullable = false)
     protected Long id;
 
     @Column(name = "name")
@@ -28,6 +28,7 @@ public abstract class Product {
     @DecimalMax(value = "9999.00", message = "Price can't be bigger than 9999.0")
     protected Double price;
 
+    @Transient
     protected String className;
 
 
