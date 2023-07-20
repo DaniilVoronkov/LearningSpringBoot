@@ -9,12 +9,12 @@ export default class ProductsData extends Component {
     }
 
     async componentDidMount() {
-        const productClass = window.location.pathname.split("/")[1];
 
-        await fetch('/' + productClass + '/ProductsTable')
+        const fetchPath = window.location.pathname;
+
+        await fetch(fetchPath)
             .then(response => response.json())
             .then(data => this.setState({products: data}));
-
     }
 
     async remove(productClass, productId) {
