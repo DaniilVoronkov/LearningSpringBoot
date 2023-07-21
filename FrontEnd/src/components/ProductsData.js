@@ -15,6 +15,7 @@ export default class ProductsData extends Component {
         await fetch(fetchPath)
             .then(response => response.json())
             .then(data => this.setState({products: data}));
+
     }
 
     async remove(productClass, productId) {
@@ -32,14 +33,16 @@ export default class ProductsData extends Component {
 
     render() {
         const {products} = this.state;
+        console.log(this.state.products)
 
         return products.map(product => {
+            const concatenatedClassPlusType = product.className.toLowerCase() + "Type";
 
             return <tr key={product.id}>
-
                 <td>{product.name}</td>
                 <td>{product.price}</td>
-                <td>{product.type}</td>
+                <td>{product[concatenatedClassPlusType]}</td>
+                <td>{product.className}</td>
                 <td>
 
                     <button type="button" onClick={() => this.remove(product.className, product.id)}>

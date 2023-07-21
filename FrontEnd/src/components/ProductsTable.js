@@ -21,6 +21,7 @@ export default function ProductsTable() {
                                 <th>Product Name</th>
                                 <th>Product price</th>
                                 <th>Product Type</th>
+                                <th>Product class</th>
                                 <th></th>
                                 <th></th>
                             </tr>
