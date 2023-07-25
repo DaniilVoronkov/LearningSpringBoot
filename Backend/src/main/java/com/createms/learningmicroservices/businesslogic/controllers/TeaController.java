@@ -42,8 +42,6 @@ public class TeaController implements ProductController<Tea> {
         teaService.deleteTeaById(id);
     }
 
-
-
     //function that performs the edit process (by redirecting to the corresponding service method)
     @PatchMapping(path = "/Edit/{id}")
     @ResponseBody

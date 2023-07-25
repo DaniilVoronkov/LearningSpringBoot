@@ -3,7 +3,7 @@
 
 
 
-Priary field
+Primary field
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name="COLUMNNAME")

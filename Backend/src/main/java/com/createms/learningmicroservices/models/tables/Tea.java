@@ -3,6 +3,7 @@ package com.createms.learningmicroservices.models.tables;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
 import com.createms.learningmicroservices.models.enums.TeaType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -29,15 +30,13 @@ public class Tea extends Product {
     public Tea() {
     }
 
+    @JsonProperty(value = "teaType", access = JsonProperty.Access.READ_ONLY)
     public TeaType getType() {
         return teaType;
     }
     public void setTeaType(TeaType teaType) {
         this.teaType = teaType;
     }
-
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -59,6 +58,7 @@ public class Tea extends Product {
                 " name='" + name + '\'' +
                 ", teaType=" + teaType +
                 ", teaPrice=" + price +
+                ", class=" + className +
                 '}';
     }
 }
