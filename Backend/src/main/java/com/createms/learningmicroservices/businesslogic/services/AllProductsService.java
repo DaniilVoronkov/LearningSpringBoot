@@ -19,4 +19,8 @@ public class  AllProductsService <T extends Product> {
         System.out.println(productsRepository.findAll());
         return (List<T>) productsRepository.findAll();
     }
+
+    public List<ProductsRepository.ProductNameAndId> findAllProductsWithGivenName(String name) {
+        return productsRepository.findByNameContains(name);
+    }
 }
