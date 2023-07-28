@@ -23,7 +23,7 @@ public class AllProductsController <T extends Product> {
     }
 
     @GetMapping("/ProductsWithGivenName")
-    public List<ProductsRepository.ProductNameAndId> getAllProducts(@RequestBody String name) {
-        return productsService.findAllProductsWithGivenName(name);
+    public List<ProductsRepository.ProductNames> getAllProductsWithGivenName(@RequestBody String name) {
+        return productsService.findAllProductsThatContainsGivenName(name);
     }
 }

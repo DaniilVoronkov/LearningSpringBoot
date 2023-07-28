@@ -20,7 +20,7 @@ public class  AllProductsService <T extends Product> {
         return (List<T>) productsRepository.findAll();
     }
 
-    public List<ProductsRepository.ProductNameAndId> findAllProductsWithGivenName(String name) {
-        return productsRepository.findByNameContains(name);
+    public List<ProductsRepository.ProductNames> findAllProductsThatContainsGivenName(String name) {
+        return productsRepository.findByNameContainsIgnoreCase(name);
     }
 }
