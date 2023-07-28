@@ -1,6 +1,7 @@
 package com.createms.learningmicroservices.models.repositories;
 
 import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.config.Projection;
 
@@ -9,15 +10,14 @@ import java.util.List;
 public interface ProductsRepository <T extends Product> extends CrudRepository<T, Long> {
 
     //interface projection example
-//    interface ProductNames {
-//        String getName();
-//        Long getId();
-//
-//        default String getData() {
-//            return getName() + " " + getId();
-//        }
-//
-//    }
+    interface ProductNames {
+        String getName();
+        Long getId();
+
+        @Value("#{target.getClassName()}")
+        String getClassName();
+
+    }
 
     @Projection(name = "idPlusName", types = {Product.class})
     class ProductNameAndId {
@@ -27,6 +27,7 @@ public interface ProductsRepository <T extends Product> extends CrudRepository<T
         public ProductNameAndId(Long id, String name) {
             this.id = id;
             this.name = name;
+
         }
 
         public Long getId() {
@@ -48,5 +49,8 @@ public interface ProductsRepository <T extends Product> extends CrudRepository<T
     }
 
     //finding product that contains given string and returning list with id + name objects
-    List<ProductNameAndId> findByNameContains(String name);
+    List<ProductNameAndId> findByNameLike(String name);
+
+    List<ProductNames> findByNameContainsIgnoreCase(String name);
+
 }
