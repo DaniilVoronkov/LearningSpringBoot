@@ -67,4 +67,6 @@ public abstract class Product {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 }

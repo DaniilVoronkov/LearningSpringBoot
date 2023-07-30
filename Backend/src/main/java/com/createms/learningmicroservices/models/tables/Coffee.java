@@ -11,7 +11,7 @@ import java.util.Objects;
 @PrimaryKeyJoinColumn(name = "Id")
 public class Coffee extends Product {
 
-    @Column(name="Type")
+    @Column(name="type")
     @Enumerated(EnumType.STRING)
     private CoffeeType coffeeType;
 
@@ -50,9 +50,10 @@ public class Coffee extends Product {
     public String toString() {
         return "Coffee{" +
                 "Id: " + id +
-                "coffeeType=" + coffeeType +
+                ", coffeeType=" + coffeeType +
                 ", coffeePrice=" + getPrice() +
-                ", name='" + name + '\'' +
+                ", name='" + name +
+                ", class=" + className +
                 '}';
     }
 }

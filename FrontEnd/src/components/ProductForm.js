@@ -91,7 +91,7 @@ export default function ProductForm() {
                 <div className="form-group">
                     {/* <!-- Product price input --> */}
                     <label htmlFor="productPrice">Price:</label>
-                    <input id="productPrice" type="text" inputMode="decimal" pattern="[0-9]{2,10}[,.]?[0-9]{0,2}" name="productPrice" placeholder="Product price:"
+                    <input id="productPrice" type="text" inputMode="decimal" pattern="[0-9]{2,10}[,.]?[0-9]{0,2}" title="Price must contain at least 2 numbers before the dot" name="productPrice" placeholder="Product price:"
                            className="form-control" defaultValue={isProductNew ? '' : productValue.product.price}
                            {...register("price", {
                                min: {
