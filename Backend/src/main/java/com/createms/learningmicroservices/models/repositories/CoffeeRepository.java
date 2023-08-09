@@ -1,7 +1,7 @@
-package com.createms.learningmicroservices.models.repositories;
+package models.repositories;
 
-import com.createms.learningmicroservices.models.abstraction.repositories.ProductRepository;
-import com.createms.learningmicroservices.models.tables.Coffee;
+import models.abstraction.repositories.ProductRepository;
+import models.tables.Coffee;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CoffeeRepository extends CrudRepository<Coffee, Long>, ProductRepository {

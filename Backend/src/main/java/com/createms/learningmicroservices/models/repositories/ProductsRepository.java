@@ -1,6 +1,6 @@
-package com.createms.learningmicroservices.models.repositories;
+package models.repositories;
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
+import models.abstraction.classesabstraction.Product;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.config.Projection;

@@ -1,8 +1,8 @@
-package com.createms.learningmicroservices.businesslogic.controllers;
+package businesslogic.controllers;
 
-import com.createms.learningmicroservices.businesslogic.services.AllProductsService;
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
-import com.createms.learningmicroservices.models.repositories.ProductsRepository;
+import businesslogic.services.AllProductsService;
+import models.abstraction.classesabstraction.Product;
+import models.repositories.ProductsRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

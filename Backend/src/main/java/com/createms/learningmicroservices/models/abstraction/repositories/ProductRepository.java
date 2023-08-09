@@ -1,6 +1,6 @@
-package com.createms.learningmicroservices.models.abstraction.repositories;
+package models.abstraction.repositories;
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
+import models.abstraction.classesabstraction.Product;
 
 public interface ProductRepository {
     Product findByName(String name);

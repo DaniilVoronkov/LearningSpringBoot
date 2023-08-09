@@ -1,4 +1,4 @@
-package com.createms.learningmicroservices.models.abstraction.enumsabstraction;
+package models.abstraction.enumsabstraction;
 
 public interface ProductType {
 

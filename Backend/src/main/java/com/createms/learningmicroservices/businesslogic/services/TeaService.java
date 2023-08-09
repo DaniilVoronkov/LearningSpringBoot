@@ -1,10 +1,10 @@
-package com.createms.learningmicroservices.businesslogic.services;
+package businesslogic.services;
 
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
-import com.createms.learningmicroservices.models.enums.TeaType;
-import com.createms.learningmicroservices.models.repositories.TeaRepository;
-import com.createms.learningmicroservices.models.tables.Tea;
+import models.abstraction.classesabstraction.ProductDTO;
+import models.enums.TeaType;
+import models.repositories.TeaRepository;
+import models.tables.Tea;
 import jakarta.validation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;

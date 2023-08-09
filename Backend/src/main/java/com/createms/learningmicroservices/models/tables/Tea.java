@@ -1,8 +1,8 @@
-package com.createms.learningmicroservices.models.tables;
+package models.tables;
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
-import com.createms.learningmicroservices.models.enums.TeaType;
+import models.abstraction.classesabstraction.Product;
+import models.abstraction.classesabstraction.ProductDTO;
+import models.enums.TeaType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 

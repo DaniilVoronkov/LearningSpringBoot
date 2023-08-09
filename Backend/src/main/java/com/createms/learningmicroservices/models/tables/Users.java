@@ -1,4 +1,4 @@
-package com.createms.learningmicroservices.models.tables;
+package models.tables;
 
 
 import jakarta.persistence.*;

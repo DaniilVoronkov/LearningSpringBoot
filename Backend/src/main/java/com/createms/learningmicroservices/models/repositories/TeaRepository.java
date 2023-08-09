@@ -1,8 +1,8 @@
-package com.createms.learningmicroservices.models.repositories;
+package models.repositories;
 
-import com.createms.learningmicroservices.models.abstraction.repositories.ProductRepository;
-import com.createms.learningmicroservices.models.enums.TeaType;
-import com.createms.learningmicroservices.models.tables.Tea;
+import models.abstraction.repositories.ProductRepository;
+import models.enums.TeaType;
+import models.tables.Tea;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

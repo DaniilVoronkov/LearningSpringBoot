@@ -1,4 +1,4 @@
-package com.createms.learningmicroservices.models.abstraction.classesabstraction;
+package models.abstraction.classesabstraction;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

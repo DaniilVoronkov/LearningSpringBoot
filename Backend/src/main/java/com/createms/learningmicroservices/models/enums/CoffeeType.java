@@ -1,6 +1,6 @@
-package com.createms.learningmicroservices.models.enums;
+package models.enums;
 
-import com.createms.learningmicroservices.models.abstraction.enumsabstraction.ProductType;
+import models.abstraction.enumsabstraction.ProductType;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 

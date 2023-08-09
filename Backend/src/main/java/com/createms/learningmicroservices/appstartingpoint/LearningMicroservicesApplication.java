@@ -1,14 +1,7 @@
-package com.createms.learningmicroservices;
+package appstartingpoint;
 
-import com.createms.learningmicroservices.models.repositories.CoffeeRepository;
-import com.createms.learningmicroservices.models.repositories.ProductsRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 
 @SpringBootApplication

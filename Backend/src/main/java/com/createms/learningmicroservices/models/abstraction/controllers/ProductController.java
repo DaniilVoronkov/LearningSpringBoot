@@ -1,7 +1,7 @@
-package com.createms.learningmicroservices.models.abstraction.controllers;
+package models.abstraction.controllers;
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.ProductDTO;
+import models.abstraction.classesabstraction.Product;
+import models.abstraction.classesabstraction.ProductDTO;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;

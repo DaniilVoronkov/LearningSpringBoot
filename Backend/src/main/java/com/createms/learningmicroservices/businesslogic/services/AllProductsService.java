@@ -1,7 +1,7 @@
-package com.createms.learningmicroservices.businesslogic.services;
+package businesslogic.services;
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
-import com.createms.learningmicroservices.models.repositories.ProductsRepository;
+import models.abstraction.classesabstraction.Product;
+import models.repositories.ProductsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

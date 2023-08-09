@@ -1,7 +1,7 @@
-package com.createms.learningmicroservices.models.tables;
+package models.tables;
 
-import com.createms.learningmicroservices.models.abstraction.classesabstraction.Product;
-import com.createms.learningmicroservices.models.enums.CoffeeType;
+import models.abstraction.classesabstraction.Product;
+import models.enums.CoffeeType;
 import jakarta.persistence.*;
 
 import java.util.Objects;

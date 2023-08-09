@@ -1,9 +1,7 @@
-package com.createms.learningmicroservices;
-
-import com.createms.learningmicroservices.businesslogic.services.TeaService;
-import com.createms.learningmicroservices.models.enums.TeaType;
-import com.createms.learningmicroservices.models.repositories.TeaRepository;
-import com.createms.learningmicroservices.models.tables.Tea;
+import businesslogic.services.TeaService;
+import models.enums.TeaType;
+import models.repositories.TeaRepository;
+import models.tables.Tea;
 import jakarta.validation.ConstraintViolation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
