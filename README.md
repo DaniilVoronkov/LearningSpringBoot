@@ -1,6 +1,12 @@
 # LearningSpringBoot
 Here I learn the Spring boot on example of web-store site. 
 
+
+Project structure:
+1) Backend folder - Spring boot
+2) FrontEnd folder - React components and tests
+3) DB - MySQL configuration
+
 Current DB state:
 
 
