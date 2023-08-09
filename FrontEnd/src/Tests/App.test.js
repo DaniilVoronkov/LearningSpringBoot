@@ -1,8 +1,8 @@
 import {render, screen} from '@testing-library/react';
 import App from '../App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+test('Renders starting point + checking if the div with the browserRouter is presented in the document', () => {
+  const result = render(<App />);
+  const linkElement = result.container.querySelector(".App");
   expect(linkElement).toBeInTheDocument();
 });
