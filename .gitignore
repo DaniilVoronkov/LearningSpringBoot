@@ -54,3 +54,6 @@ buildNumber.properties
 
 #### Credentials file ####
 env.properties
+
+### Allow Files ###
+!/LearningMicroservices.iml
