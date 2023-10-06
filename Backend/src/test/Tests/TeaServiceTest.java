@@ -1,7 +1,9 @@
-import businesslogic.services.TeaService;
-import models.enums.TeaType;
-import models.repositories.TeaRepository;
-import models.tables.Tea;
+
+import main.businesslogic.services.TeaService;
+import main.models.enums.TeaType;
+import main.models.repositories.TeaRepository;
+import main.models.tables.Tea;
+
 import jakarta.validation.ConstraintViolation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

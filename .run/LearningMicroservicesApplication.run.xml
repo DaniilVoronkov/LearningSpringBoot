@@ -1,7 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="LearningMicroservicesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="INCLUDE_PROVIDED_SCOPE" value="false" />
     <module name="LearningMicroservices" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="appstartingpoint.LearningMicroservicesApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="main.LearningMicroservicesApplication" />
+    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
